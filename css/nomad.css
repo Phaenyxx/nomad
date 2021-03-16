@@ -18,8 +18,6 @@
 body {
 	color: var(--dark-heavy);
 	font-family: 'Pokemon';
-	-webkit-font-smoothing: none;
-	font-smooth: never;
 	text-shadow: 1px 1px var(--dark-accent);
 	font-size: 8px;
 	text-align: center;
@@ -32,7 +30,7 @@ body {
 }
 
 .background{
-	/* background-color: var(--light-shade); */
+	background-color: var(--light-shade);
 	position: absolute;
 	z-index: 1;
 	top: 0;
@@ -50,96 +48,103 @@ body {
 
 .content{
 	background-color: var(--light-shade);
-	box-shadow: 5px 5px var(--dark-shade);
+	box-shadow: 4px 4px var(--dark-heavy);
 	position: relative;
 	z-index: 100;
 	width: 70%;
 	min-width: 350px;
-	max-width: 600px;
-	max-height: 90%;
+	max-width: 900px;
 	margin: auto;
-	padding: 16px;
+	padding: 8px;
 }
 
 .main{
 	width: min-content;
-	border: 2px dashed black;
-	margin: 16px auto ;
+	margin: 16px 0 ;
+	width: 100%;
 	display: grid;
 	grid-template-areas:
-	"map actions"
-	"items ground";
-	grid-template-columns: min-content;
-	grid-template-rows: min-content;
+	"map lore lore"
+	"map structure monsters"
+	"map actions actions"
+	"items actions actions"
+	"ground actions actions";
 	grid-gap: 16px;
-	justify-items: left;
+	grid-template-columns: 0fr 1fr 1fr;
 }
-@media screen and (max-width: 800px) {
-	.main {
-		grid-template-areas: 
-		"map items"
-		"map ground"
-		"map ."
-		"actions actions";
-	}
-  }
+
 @media screen and (max-width: 550px) {
 	.main {
 		justify-items: center;
-		grid-template-areas: 
-		"map"
-		"items"
-		"ground"
-		"actions";
+
 	}
 }
 
 .header, .footer{
 	height: 40px;
 	background-color: var(--dark-accent);
-	box-shadow: 5px 5px var(--dark-shade);
+	box-shadow: 4px 4px var(--dark-heavy);
+}
+
+.map, .lore, .structure, .monsters, .items, .ground, .actions{
+	box-shadow: 4px 4px var(--dark-heavy);
+	min-height: 20px;
+	background-color: var(--main);
 }
 
 .map{
 	grid-area: map;
-	width: 192px;
-	height: 192px;
 	background-color: var(--green);
-	box-shadow: 5px 5px var(--dark-shade);
-	
+	width: 200px;
+	height: 200px;
+}
+
+.lore{
+	grid-area: lore;
+	height: 80px;
+	/* width: 300px; */
+}
+
+
+.structure{
+	grid-area: structure;
+	background-color: var(--light-accent);
+}
+.monsters{
+	grid-area: monsters;
+	background-color: var(--red);
 }
 
 .actions{
 	grid-area: actions;
-	background-color: var(--red);
-	box-shadow: 5px 5px var(--dark-shade);
-	width: 300px;
-	height: 192px;
+	background-color: var(--yellow);
 }
 
 .items{
+	grid-area: items;
+	background-color: var(--red);
+	width: 192px;
 	display: flex;
-	flex-direction: row;
-	background-color: var(--main);
-	width: 144px;
-	height: 24px;
-	box-shadow: 5px 5px  var(--dark-shade);
-}
-
-button.item{
-	background-image: url(../img/item_bg.png);
-	background-color: transparent;
-	/* box-shadow: 1px 1px var(--dark-shade); */
-	width: 20px;
-	height: 20px;
-	border: none;
-	margin: 2px;
-	color: var(--dark-shade);
+	padding: 4px;
+	text-align: left;
 }
 
 .ground{
 	grid-area: ground;
-	background-color: var(--light-accent);
-	height: 24px;
-	box-shadow: 5px 5px var(--dark-shade);
+	width: 192px;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 4px;
+	text-align: left;
+}
+
+button.item{
+	
+	background-image: url(../img/item_bg.png);
+	background-color: transparent;
+	width: 20px;
+	height: 20px;
+	border:none;
+	margin: 2px ;
+	color: var(--dark-shade);
 }
