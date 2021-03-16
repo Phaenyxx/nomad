@@ -24,6 +24,7 @@ body {
 	font-size: 8px;
 	text-align: center;
 	height: 100vh;
+	overflow: hidden;
 	margin: 0;
 	padding: 0;
 	width: 10;
@@ -42,7 +43,7 @@ body {
 }
 
 .background>img {
-	width: 100%;
+	min-width: 100%;
 	min-height: 100%;
 }
 
@@ -78,6 +79,7 @@ body {
 		grid-template-areas: 
 		"map items"
 		"map ground"
+		"map ."
 		"actions actions";
 	}
   }
@@ -116,18 +118,28 @@ body {
 }
 
 .items{
-	grid-area: items;
-	background-color: var(--yellow);
+	display: flex;
+	flex-direction: row;
+	background-color: var(--main);
 	width: 144px;
-	height: 20px;
-	border: 2px solid var(--main);
+	height: 24px;
 	box-shadow: 5px 5px  var(--dark-shade);
+}
+
+button.item{
+	background-image: url(../img/item_bg.png);
+	background-color: transparent;
+	/* box-shadow: 1px 1px var(--dark-shade); */
+	width: 20px;
+	height: 20px;
+	border: none;
+	margin: 2px;
+	color: var(--dark-shade);
 }
 
 .ground{
 	grid-area: ground;
 	background-color: var(--light-accent);
-	height: 20px;
-	border: 2px solid var(--main);
+	height: 24px;
 	box-shadow: 5px 5px var(--dark-shade);
 }
