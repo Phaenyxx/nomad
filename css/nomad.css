@@ -1,13 +1,19 @@
 :root {
-	--dark-heavy: #17171a;
-	--dark-shade: #2F2F36;
-	--dark-accent: #877B73;
-	--light-shade: #E8E8DB;
-	--light-accent: #85A7BE;
-	--main: #AB9781;
-	--yellow: #C9B696;
-	--green: #7FAFAC;
-	--red: #A26D7E;
+	--light: #f5f7e1;
+	--light-grey: #cccac5;
+	--grey: #a8916c;
+	--dark-grey: #5f5446;
+	--dark: #171820;
+	--red: #b3546c;
+	--pink: #d4a5a6;
+	--orange: #be7f6c;
+	--yellow: #c9ab6d;
+	--cyan: #66bdb7;
+	--green: #aacf95;
+	--light-blue: #8DC3CC;
+	--blue: #5a7aa6;
+	--purple: #a08c9c;
+	--dark-purple: #67506e;
 }
 
 @font-face {
@@ -20,9 +26,9 @@
 }
 
 body {
-	color: var(--dark-heavy);
+	color: var(--dark);
 	font-family: 'Pokemon';
-	text-shadow: 1px 1px var(--dark-accent);
+	text-shadow: 1px 1px var(--grey);
 	font-size: 8px;
 	text-align: center;
 	height: 100vh;
@@ -40,7 +46,7 @@ span {
 }
 
 .background{
-	background-color: var(--light-shade);
+	background-color: var(--light);
 	position: absolute;
 	z-index: 1;
 	top: 0;
@@ -57,8 +63,8 @@ span {
 
 
 .content{
-	background-color: var(--light-shade);
-	box-shadow: 4px 4px var(--dark-heavy);
+	background-color: var(--light);
+	box-shadow: 4px 4px var(--dark);
 	position: relative;
 	z-index: 100;
 	width: 70%;
@@ -101,28 +107,29 @@ span {
 
 .header, .footer{
 	height: 40px;
-	background-color: var(--dark-accent);
-	box-shadow: 4px 4px var(--dark-heavy);
+	background-color: var(--grey);
+	box-shadow: 4px 4px var(--dark);
 }
 
 #map, #lore, #structure, #monsters, #items, #ground, #actions, #chat, #players{
-	box-shadow: 4px 4px var(--dark-heavy);
+	box-shadow: 4px 4px var(--dark);
 	height: min-content;
 	padding: 4px;
 	min-height: 20px;
-	background-color: var(--main);
+	background-color: var(--grey);
 	text-align: left;
 }
 
 #map{
 	grid-area: map;
-	background-color: var(--green);
+	background-color: var(--cyan);
 	width: 200px;
 	height: 200px;
 }
 
 #lore{
 	grid-area: lore;
+	background-color: var(--purple);
 	height: 80px;
 	width: 100%; 
 }
@@ -130,7 +137,7 @@ span {
 
 #structure{
 	grid-area: structure;
-	background-color: var(--light-accent);
+	background-color: var(--light-blue);
 	align-self: center;
 	width: max-content;
 	height: max-content;
@@ -153,13 +160,14 @@ span {
 
 #items{
 	grid-area: items;
-	background-color: var(--red);
+	background-color: var(--orange);
 	width: 200px;
 	display: flex;
 }
 
 #ground{
 	grid-area: ground;
+	background-color: var(--green);
 	width: 200px;
 	display: flex;
 	flex-wrap: wrap;
@@ -167,7 +175,7 @@ span {
 
 #chat{
 	grid-area: chat;
-	background-color: var(--yellow);
+	background-color: var(--light-grey);
 	height: 100%;
 	min-height: 250px;
 }
@@ -180,9 +188,9 @@ button.item{
 	
 	background-image: url(../img/item_bg.png);
 	background-color: transparent;
-	width: 20px;
-	height: 20px;
+	width: 22px;
+	height: 22px;
 	border:none;
-	margin: 2px ;
-	color: var(--dark-shade);
+	margin: 1px ;
+	color: var(--dark);
 }
