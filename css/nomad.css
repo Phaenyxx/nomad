@@ -1,19 +1,20 @@
+@import url("blocks.css");
+
+
 :root {
-	--light: #f5f7e1;
-	--light-grey: #cccac5;
-	--grey: #a8916c;
-	--dark-grey: #5f5446;
-	--dark: #171820;
-	--red: #b3546c;
-	--pink: #d4a5a6;
-	--orange: #be7f6c;
-	--yellow: #c9ab6d;
-	--cyan: #66bdb7;
-	--green: #aacf95;
-	--light-blue: #8DC3CC;
-	--blue: #5a7aa6;
-	--purple: #a08c9c;
-	--dark-purple: #67506e;
+	--light: #EEF0E1;
+	--base: #D4D0B2;
+	--alternate: #8F786A;
+	--shade: #645152;
+	--accent: #A08761;
+	--dark: #0D0221;
+	--green: #6F9075;
+	--purple: #745A8C;
+	--blue: #3D5C87;
+	--light-blue: #78A8BA;
+	--red: #8E3B46;
+	--pink: #BF9294;
+	--yellow: #DBBD70;
 }
 
 @font-face {
@@ -26,10 +27,10 @@
 }
 
 body {
-	color: var(--dark);
 	font-family: 'Pokemon';
-	text-shadow: 1px 1px var(--grey);
 	font-size: 8px;
+	color: var(--dark);
+	text-shadow: 1px 1px var(--shade);
 	text-align: center;
 	height: 100vh;
 	overflow: hidden;
@@ -46,7 +47,6 @@ span {
 }
 
 .background{
-	background-color: var(--light);
 	position: absolute;
 	z-index: 1;
 	top: 0;
@@ -59,19 +59,6 @@ span {
 .background>img {
 	min-width: 100%;
 	min-height: 100%;
-}
-
-
-.content{
-	background-color: var(--light);
-	box-shadow: 4px 4px var(--dark);
-	position: relative;
-	z-index: 100;
-	width: 70%;
-	min-width: 500px;
-	max-width: 900px;
-	margin: auto;
-	padding: 16px;
 }
 
 .main{
@@ -105,84 +92,6 @@ span {
 	}
 }
 
-.header, .footer{
-	height: 40px;
-	background-color: var(--grey);
-	box-shadow: 4px 4px var(--dark);
-}
-
-#map, #lore, #structure, #monsters, #items, #ground, #actions, #chat, #players{
-	box-shadow: 4px 4px var(--dark);
-	height: min-content;
-	padding: 4px;
-	min-height: 20px;
-	background-color: var(--grey);
-	text-align: left;
-}
-
-#map{
-	grid-area: map;
-	background-color: var(--cyan);
-	width: 200px;
-	height: 200px;
-}
-
-#lore{
-	grid-area: lore;
-	background-color: var(--purple);
-	height: 80px;
-	width: 100%; 
-}
-
-
-#structure{
-	grid-area: structure;
-	background-color: var(--light-blue);
-	align-self: center;
-	width: max-content;
-	height: max-content;
-}
-
-#monsters{
-	grid-area: monsters;
-	background-color: var(--red);
-	display: flex;
-	flex: 1 1 40px;
-	flex-wrap: wrap;
-	height: max-content;
-}
-
-#actions{
-	grid-area: actions;
-	background-color: var(--yellow);
-	height: 140px;
-}
-
-#items{
-	grid-area: items;
-	background-color: var(--orange);
-	width: 200px;
-	display: flex;
-}
-
-#ground{
-	grid-area: ground;
-	background-color: var(--green);
-	width: 200px;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-#chat{
-	grid-area: chat;
-	background-color: var(--light-grey);
-	height: 100%;
-	min-height: 250px;
-}
-
-#players{
-	grid-area: players;
-}
 
 button.item{
 	

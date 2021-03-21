@@ -1,0 +1,87 @@
+.content{
+	background-color: var(--base);
+	box-shadow: 4px 4px var(--dark);
+	position: relative;
+	z-index: 100;
+	width: 70%;
+	min-width: 500px;
+	max-width: 900px;
+	margin: auto;
+	padding: 16px;
+}
+
+.header, .footer{
+	height: 40px;
+	background-color: var(--accent);
+	box-shadow: 4px 4px var(--dark);
+}
+
+#map, #lore, #structure, #monsters, #items, #ground, #actions, #chat, #players{
+	box-shadow: 4px 4px var(--dark);
+	height: min-content;
+	padding: 4px;
+	min-height: 20px;
+	background-color: var(--alternate);
+	text-align: left;
+}
+
+#map{
+	grid-area: map;
+	background-color: var(--green);
+	width: 200px;
+	height: 200px;
+}
+
+#lore{
+	grid-area: lore;
+	height: 80px;
+	width: 100%; 
+	background-color: var(--purple);
+}
+
+
+#structure{
+	grid-area: structure;
+	align-self: center;
+	width: max-content;
+	height: max-content;
+	background-color: var(--blue);
+}
+
+#monsters{
+	grid-area: monsters;
+	display: flex;
+	flex: 1 1 40px;
+	flex-wrap: wrap;
+	height: max-content;
+	background-color: var(--red);
+}
+
+#actions{
+	grid-area: actions;
+	height: 140px;
+	background-color: var(--yellow);
+}
+
+#items{
+	grid-area: items;
+	width: 200px;
+	display: flex;
+}
+
+#ground{
+	grid-area: ground;
+	width: 200px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#chat{
+	grid-area: chat;
+	height: 100%;
+	min-height: 250px;
+}
+
+#players{
+	grid-area: players;
+}
