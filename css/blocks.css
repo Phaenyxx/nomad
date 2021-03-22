@@ -11,13 +11,15 @@
 }
 
 .header, .footer{
+	border-image: url("../img/border.png") 3 3 3 3 / 2px 2px stretch;
 	height: 40px;
 	background-color: var(--accent);
-	box-shadow: 4px 4px var(--dark);
+	box-shadow: 3px 3px var(--dark);
 }
 
 #map, #lore, #structure, #monsters, #items, #ground, #actions, #chat, #players{
-	box-shadow: 4px 4px var(--dark);
+	border-image: url("../img/border.png") 3 3 3 3 / 2px 2px stretch;
+	box-shadow: 3px 3px var(--dark);
 	height: min-content;
 	padding: 4px;
 	min-height: 20px;
@@ -33,6 +35,7 @@
 }
 
 #lore{
+	
 	grid-area: lore;
 	height: 80px;
 	width: 100%; 
@@ -54,6 +57,7 @@
 	flex: 1 1 40px;
 	flex-wrap: wrap;
 	height: max-content;
+	justify-content: center;
 	background-color: var(--red);
 }
 
