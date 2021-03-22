@@ -68,11 +68,12 @@ span {
 	display: grid;
 	grid-template-areas:
 	"map lore lore lore "
-	"map structure monsters players"
+	"map structure monsters monsters"
 	"map chat chat chat"
 	"items chat chat chat"
 	"ground chat chat chat"
-	"actions chat chat chat";
+	"actions chat chat chat"
+	"actions players players players";
 	grid-gap: 16px;
 	grid-template-columns: 0fr min-content 1.3fr 1fr;
 	grid-template-rows: max-content max-content max-content min-content min-content;
@@ -95,7 +96,7 @@ span {
 
 button.item{
 	
-	background-image: url(../img/item_bg.png);
+	background-image: url("../img/ui/item_bg.png");
 	background-color: transparent;
 	width: 22px;
 	height: 22px;

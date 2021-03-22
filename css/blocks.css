@@ -1,4 +1,5 @@
 .content{
+	border-image: url("../img/border.png") 3 3 3 3 / 3px 3px stretch;
 	background-color: var(--base);
 	box-shadow: 4px 4px var(--dark);
 	position: relative;
@@ -11,15 +12,16 @@
 }
 
 .header, .footer{
-	border-image: url("../img/border.png") 3 3 3 3 / 2px 2px stretch;
+	border-image: url("../img/ui/border.png") 3 3 3 3 / 3px 3px stretch;
 	height: 40px;
 	background-color: var(--accent);
 	box-shadow: 3px 3px var(--dark);
 }
 
 #map, #lore, #structure, #monsters, #items, #ground, #actions, #chat, #players{
-	border-image: url("../img/border.png") 3 3 3 3 / 2px 2px stretch;
+	border-image: url("../img/ui/border.png") 3 3 3 3 / 3px 3px stretch;
 	box-shadow: 3px 3px var(--dark);
+	border-radius: 3px;
 	height: min-content;
 	padding: 4px;
 	min-height: 20px;
