@@ -1,7 +1,8 @@
 .content{
 	border-image: url("../img/border.png") 3 3 3 3 / 3px 3px stretch;
 	background-color: var(--base);
-	box-shadow: 4px 4px var(--dark);
+	box-shadow: 5px 5px var(--dark);
+	border-radius: 2px;
 	position: relative;
 	z-index: 100;
 	width: 70%;
@@ -16,6 +17,7 @@
 	height: 40px;
 	background-color: var(--accent);
 	box-shadow: 3px 3px var(--dark);
+	border-radius: 3px;
 }
 
 #map, #lore, #structure, #monsters, #items, #ground, #actions, #chat, #players{
@@ -34,6 +36,7 @@
 	background-color: var(--green);
 	width: 200px;
 	height: 200px;
+	position: relative;
 }
 
 #lore{
