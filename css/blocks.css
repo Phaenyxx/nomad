@@ -37,6 +37,9 @@
 	width: 200px;
 	height: 200px;
 	position: relative;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
 }
 
 #lore{
@@ -59,10 +62,9 @@
 #monsters{
 	grid-area: monsters;
 	display: flex;
-	flex: 1 1 40px;
 	flex-wrap: wrap;
 	height: max-content;
-	justify-content: center;
+	justify-content: space-evenly;
 	background-color: var(--red);
 }
 

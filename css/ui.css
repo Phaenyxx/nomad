@@ -1,15 +1,44 @@
 button.item{
-	background-image: url("../img/ui/item_bg.png");
+	border-image: url("../img/ui/item_bg.png") 3 3 3 3 / 3px 3px stretch;
 	background-color: transparent;
 	width: 22px;
 	height: 22px;
-	border:none;
 	margin: 1px;
 	color: var(--dark);
+	padding: 0px;
 }
 
 button.item.job{
-	background-image: url("../img/ui/job_item_bg.png");
+	border-image: url("../img/ui/job_item_bg.png") 3 3 3 3 / 3px 3px  stretch;
+}
+button.item img{
+	margin:1px;
+}
+
+button.monster{
+	border-image: url("../img/ui/item_bg.png") 3 3 3 3 / 3px 3px stretch;
+	background-color: transparent;
+	width: 30px;
+	height: 30px;
+	margin: 1px;
+	color: var(--dark);
+	padding: 0px;
+}
+button.monster img{
+	margin:1px;
+}
+
+button.structure{
+	border-image: url("../img/ui/job_item_bg.png") 3 3 3 3 / 3px 3px stretch;
+	background-color: transparent;
+	width: 30px;
+	height: 30px;
+	margin: 1px;
+	color: var(--dark);
+	padding: 0px;
+}
+button.structure img{
+	margin:1px;
 }
 
 button.arrow{
