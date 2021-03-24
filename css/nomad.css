@@ -46,6 +46,10 @@ span {
 	line-height: normal;
 }
 
+span img{
+	margin: 5px 0 0;
+}
+
 .background{
 	position: absolute;
 	z-index: 1;
@@ -91,4 +95,8 @@ span {
 	"chat chat chat";
 	grid-template-columns: 0fr 1fr;
 	}
+}
+
+#gobelin{
+	border:1px solid black;
 }
