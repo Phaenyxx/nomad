@@ -1,0 +1,20 @@
+Nav : 
+ - Game
+ - Forums
+ - Settings
+
+Hide the one in use
+
+Survie : 
+ - Santé
+ - Hydratation
+ - Faim
+ - Inventaire :
+    - Métier 1 -option
+    - Spé -option
+    - 6 emplacements
+ - Équipement :
+    - Arme
+    - Armure
+    - Talisman
+ - Money
