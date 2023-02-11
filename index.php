@@ -7,4 +7,10 @@
     <title>Nomad - Accueil</title>
 </head>
 
+<body>
+    <ul>
+        <li></li>
+</ul>
+</body>
+
 </html>

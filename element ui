@@ -13,9 +13,11 @@ Survie :
     - Métier 1 - option
     - Spé - option
     - 6 emplacements
+ - Réserves :
+    - Bois
+    - Feraille
  - Équipement :
     - Arme
-    - Armure
     - Talisman
  - Money
 # Hide if not logged in
