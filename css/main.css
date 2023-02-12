@@ -1,0 +1,14 @@
+@import url('./fonts.css');
+@import url('./colors.css');
+
+html {
+    background-color: var(--nomad-ocean);
+}
+
+h1 {
+    font-family: "Roboto Slab", serif;
+    font-size: 32pt;
+    font-weight: 700;
+    color: var(--nomad-black);
+    text-shadow: -2px -2px 0px var(--nomad-beige);
+}

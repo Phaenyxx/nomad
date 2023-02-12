@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+
+@font-face {
+    font-family: "Cozette";
+    src: url('../assets/fonts/CozetteVector.ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

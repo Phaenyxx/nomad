@@ -8,8 +8,13 @@
 </head>
 
 <body>
+    <h1>Nomad</h1>
     <ul>
-        <li></li>
+        <li>Jeu</li>
+        <li>Forums</li>
+        <li>Paramètres</li>
+        <li>Contact</li>
+
 </ul>
 </body>
 
