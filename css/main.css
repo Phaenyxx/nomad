@@ -1,9 +1,11 @@
 @import url('./fonts.css');
 @import url('./colors.css');
 
-html {
-    background-color: var(--nomad-ocean);
-}
+@import url('./base.css');
+
+@import url('./form.css');
+@import url('./header.css');
+
 
 h1 {
     font-family: "Roboto Slab", serif;
@@ -11,4 +13,9 @@ h1 {
     font-weight: 700;
     color: var(--nomad-black);
     text-shadow: -2px -2px 0px var(--nomad-beige);
+    text-align: center;
+}
+
+.link {
+    color: var(--nomad-white);
 }

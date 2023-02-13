@@ -1,21 +1,19 @@
 <!doctype html>
 <html lang="FR-fr">
 <?php 
-    include 'html/head.html';
+include 'html/head.html';
 ?>
 <head>
-    <title>Nomad - Accueil</title>
+<title>Nomad - Accueil</title>
 </head>
 
 <body>
-    <h1>Nomad</h1>
-    <ul>
-        <li>Jeu</li>
-        <li>Forums</li>
-        <li>Paramètres</li>
-        <li>Contact</li>
-
-</ul>
+    <?php
+    include 'html/header.html'
+    ?>
+    <div id="content">
+        EMPTY
+    </div>
 </body>
-
+<script src="js/reload.js"></script>
 </html>
