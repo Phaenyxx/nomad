@@ -7,3 +7,11 @@
     font-style: normal;
     font-display: swap;
 }
+
+@font-face {
+    font-family: "Bad Coma";
+    src: url('../assets/fonts/Bad_coma.ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

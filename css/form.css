@@ -1,8 +1,60 @@
 form {
-    width: 100vw;
-    height: 60vh;
+    flex-grow: 1;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* align-items: center;  */
+}
+
+.buttoncontainer {
+    flex-grow: 0.2;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align:center;
+    gap: 20px;
+}
+
+.form-container {
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    gap: 20px;
     align-items: center;
+    background-color: var(--nomad-emerald);
+    box-shadow: 4px 4px 0px var(--nomad-black);
+}
+ 
+#register-form {
+    display: none;
+}
+
+#register-form[style*='display: block']{
+    display: flex !important;
+}
+
+
+button, input[type="submit"], input[type="reset"] {
+    background: var(--nomad-grey);
+    color: inherit;
+    border: none;
+    padding: 5px;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    box-shadow: 2px 2px 0px var(--nomad-black);
+}
+
+input[type="text"], input[type="email"], input[type="password"],
+textarea[type="text"] {
+    background: var(--nomad-white);
+    color: inherit;
+    border: none;
+    padding: 5px;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    box-shadow: 2px 2px 0px var(--nomad-black);
 }

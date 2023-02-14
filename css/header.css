@@ -1,5 +1,5 @@
 header {
-    width: 100vw;
+    width: 100%;
     background-color: var(--nomad-beige);
 }
 #nav ul {
@@ -19,6 +19,8 @@ header {
 #nav ul li a{
     text-align: center;
     display: block;
+    height: 20px;
+    line-height: 20px;
     background-color: var(--nomad-red);
     padding: 5px;
     box-shadow: 2px 2px 0px var(--nomad-black);
