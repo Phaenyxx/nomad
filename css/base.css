@@ -14,7 +14,7 @@ html, body {
     /* overflow-x: hidden; */
     box-sizing: border-box;
     margin: 0;
-    background-color: var(--nomad-blue);
+    background-color: var(--nomad-white);
     max-width: 100vw;
     max-height: 100vh;
 }
@@ -23,4 +23,30 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+h1 {
+    font-family: "Bad Coma", serif;
+    font-size: 64pt;
+    font-weight: 700;
+    color: var(--nomad-beige);
+    text-shadow: 0.07em 0.07em 0px var(--nomad-black);
+    text-align: center;
+    background-color: var(--nomad-taupe);
+    box-shadow: 4px 4px 0px var(--nomad-black);
+    padding: 20px;
+    margin: 20px;
+}
+
+h2 {
+    font-family: "Roboto Slab", serif;
+    font-size: 16pt;
+    font-weight: 700;
+    color: var(--nomad-white);
+    /* text-shadow: 0.07em 0.07em 0px var(--nomad-black); */
+    text-align: center;
+    background-color: var(--nomad-taupe);
+    box-shadow: 4px 4px 0px var(--nomad-black);
+    padding: 20px;
+    margin: 20px;
 }

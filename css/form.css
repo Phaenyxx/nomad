@@ -23,15 +23,15 @@ form {
     justify-content: space-evenly;
     gap: 20px;
     align-items: center;
-    background-color: var(--nomad-emerald);
+    background-color: var(--nomad-lime);
     box-shadow: 4px 4px 0px var(--nomad-black);
 }
  
-#register-form {
+#register-form, #login-form {
     display: none;
 }
 
-#register-form[style*='display: block']{
+#register-form[style*='display: block'], #login-form[style*='display: block']{
     display: flex !important;
 }
 

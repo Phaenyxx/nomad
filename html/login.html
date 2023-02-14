@@ -1,5 +1,9 @@
-<h2> CONNECTION / ENREGISTREMENT</h2>
+<h2> Connexion / Enregistrement</h2>
 <div class="form-container">
+<div class="buttoncontainer">  
+    <button id="logbutton" onclick="switch_form('login')">Se connecter</button>
+    <button id="regbutton"onclick="switch_form('register')">S'enregistrer</button>
+</div>
     <form id="login-form">
         <input type="text" id="user-login" placeholder="nom d'utilisateur">
         <input type="password" id="password" placeholder="Mot de passe">
@@ -14,9 +18,4 @@
         <input type="password" id="password" placeholder="Validation du mot de passe">
         <input type="submit" value="Envoyer" id="input-submit">
     </form>
-    <div class="buttoncontainer">  
-        <button id="logbutton" onclick="switch_form('login')">Se connecter</button>
-        <button id="regbutton"onclick="switch_form('register')">S'enregistrer</button>
-    </div>
-    
 </div>

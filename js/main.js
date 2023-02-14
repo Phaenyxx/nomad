@@ -23,12 +23,12 @@ function storageAvailable(type) {
 }
 
 function loadmain(_url){
-    if (storageAvailable('sessionStorage'))
-    {
-        if ((_url === './html/game.php' || _url === './html/forums.php' || _url === './html/settings.html') && sessionStorage.getItem('logged_in') != true) {
-            _url = './html/login.html';
-        }
-    }
+    // if (storageAvailable('sessionStorage'))
+    // {
+    //     if ((_url === './html/game.php' || _url === './html/forums.php' || _url === './html/settings.html') && sessionStorage.getItem('logged_in') != true) {
+    //         _url = './html/login.html';
+    //     }
+    // }
     $.ajax({
         url : _url,
         type : 'post',
