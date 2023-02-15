@@ -66,10 +66,11 @@ function check_match(input) {
     }
     
     if (input.value != input2.value) {
-        console.log(input.name+" "+input.value +"|"+input2.name+" "+ input2.value);
         input.setCustomValidity('Les champs doivent être identiques');
+        input2.setCustomValidity('Les champs doivent être identiques')
     } else {
         input.setCustomValidity('');
+        input2.setCustomValidity('');
     }
 };
 

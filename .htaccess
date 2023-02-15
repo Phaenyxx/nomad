@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond %{SERVER_PORT} 80 [OR]
+RewriteCond %{HTTP_HOST}  ^www\.nomad\.phaenyxx\.com$ [NC]
+RewriteRule ^(.*) https://nomad.phaenyxx.com/$1 [QSA,L,R=301]
