@@ -1,5 +1,6 @@
 <?php
 // Change this to your connection info.
+session_start();
 $DATABASE_HOST = 'localhost';
 $DATABASE_USER = 'root';
 $DATABASE_PASS = '';
@@ -42,7 +43,8 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
 			$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 			$stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
 			$stmt->execute();
-			echo 'You have successfully registered, you can now login!';
+			$_SESSION['message'] = "Votre compte a été créé avec succés, vous pouvez vous connecter";
+			header('Location: ../index.php');
 		} else {
 			// Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
 			echo 'Could not prepare statement!';

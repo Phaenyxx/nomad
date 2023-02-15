@@ -4,6 +4,7 @@
     text-decoration: none;
     font-family: "Cozette", monospace;
     font-size: 9pt;
+    box-sizing: border-box;
 }
 
 a {
@@ -12,7 +13,6 @@ a {
 
 html, body {
     /* overflow-x: hidden; */
-    box-sizing: border-box;
     margin: 0;
     background-color: var(--nomad-white);
     max-width: 100vw;
@@ -23,6 +23,31 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#message-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#message-box[style*='display: block'] {
+    display: flex !important;
+}
+
+#message{
+    color: var(--nomad-white);
+    width: fit-content;
+    background-color: var(--nomad-blue);
+    box-shadow: 6px 6px 0px var(--nomad-black);
+    padding: 20px;
 }
 
 h1 {

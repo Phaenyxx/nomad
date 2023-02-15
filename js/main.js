@@ -43,6 +43,10 @@ function switch_form(type, _url){
     }
 };
 
+function print_message(input) {
+    var msg = "<div id=\"message\">" + input + "</div>";
+    $('#message-box').show().html(msg);
+};
 
 function check_match(input) {
     var input2;

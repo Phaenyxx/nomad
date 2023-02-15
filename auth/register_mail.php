@@ -35,7 +35,7 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
 	// Store the result so we can check if the account exists in the database.
 	if ($stmt->num_rows > 0) {
 		// Username already exists
-		echo 'Username exists, please choose another!';
+		$_SESSION['message'] = "Ce nom d'utilisateur existe déjà, veuillez en choisir un autre !";
 	} else {
 		// Username doesn't exists, insert new account
 		if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email, activation_code) VALUES (?, ?, ?, ?)')) {
@@ -51,7 +51,8 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
 			$activate_link = 'http://yourdomain.com/phplogin/activate.php?email=' . $_POST['email'] . '&code=' . $uniqid;
 			$message = '<p>Please click the following link to activate your account: <a href="' . $activate_link . '">' . $activate_link . '</a></p>';
 			mail($_POST['email'], $subject, $message, $headers);
-			echo 'Please check your email to activate your account!';
+			$_SESSION['message'] = "Veuillez vérifier vos mails pour activer votre compte !";
+			header('Location: ../index.php');
 		} else {
 			// Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
 			echo 'Could not prepare statement!';

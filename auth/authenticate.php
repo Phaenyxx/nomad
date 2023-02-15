@@ -36,14 +36,15 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
             $_SESSION['name'] = $_POST['username'];
             $_SESSION['id'] = $id;
             $_SESSION['page'] = './php/game.php';
+            $_SESSION['message'] = "Connexion réussie !";
             header('Location: ../index.php');
         } else {
             // Incorrect password
-            echo 'Incorrect username and/or password!';
+            $_SESSION['message'] = "Nom d'utilisateur ou mot de passe incorrect !";
         }
     } else {
         // Incorrect username
-        echo 'Incorrect username and/or password!';
+        $_SESSION['message'] = "Nom d'utilisateur ou mot de passe incorrect !";
     }
 
 	$stmt->close();

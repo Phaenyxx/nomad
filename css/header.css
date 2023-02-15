@@ -19,7 +19,6 @@ header {
 #nav ul li a{
     text-align: center;
     display: block;
-    height: 20px;
     line-height: 20px;
     background-color: var(--nomad-red);
     padding: 5px;
