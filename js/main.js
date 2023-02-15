@@ -21,7 +21,6 @@ function switch_form(type, _url){
             type : 'post',
             success: function(data) {
                 $('#form_container').html(data);
-                console.log("NTM");
             },
             error: function() {
                 $('#content').text('Une erreur s\'est produite, veuillez recharger la page');
@@ -36,7 +35,6 @@ function switch_form(type, _url){
             type : 'post',
             success: function(data) {
                 $('#form_container').html(data);
-                console.log("NTM");
             },
             error: function() {
                 $('#content').text('Une erreur s\'est produite, veuillez recharger la page');
@@ -46,13 +44,30 @@ function switch_form(type, _url){
 };
 
 
-function check(input,input2) {
+function check_match(input) {
+    var input2;
+    switch (input.name) {
+        case 'email':
+        input2 = $("#email-verif")[0];
+        break;
+        case 'email-verif':
+        input2 = $("#email")[0];
+        break;
+        case 'password-verif':
+        input2 = $("#password")[0];
+        break;
+        case 'password':
+        input2 = $("#password-verif")[0];
+        break;
+    }
+    
     if (input.value != input2.value) {
+        console.log(input.name+" "+input.value +"|"+input2.name+" "+ input2.value);
         input.setCustomValidity('Les champs doivent être identiques');
     } else {
         input.setCustomValidity('');
     }
-}
+};
 
 $(document).ready(function(){
 });
