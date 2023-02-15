@@ -6,9 +6,6 @@
 @import url('./form.css');
 @import url('./header.css');
 
-
-
-
 .link {
     color: var(--nomad-white);
 }

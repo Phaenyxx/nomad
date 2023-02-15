@@ -9,11 +9,15 @@ include 'html/head.html';
 
 <body>
     <?php
-    include 'html/header.html'
+    session_start();
+    if (!isset($_SESSION['page']))
+    $_SESSION['page'] = './html/accueil.html';
+
+    include 'php/header.php';
     ?>
-    <div id="content">
-        EMPTY
-    </div>
+    <div id="content"></div>
+    <script type="text/javascript">
+        loadmain("<?=$_SESSION['page'] ?>");
+    </script>
 </body>
-<script src="js/main.js"></script>
 </html>

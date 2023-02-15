@@ -16,7 +16,7 @@ form {
     gap: 20px;
 }
 
-.form-container {
+.container {
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -27,13 +27,13 @@ form {
     box-shadow: 4px 4px 0px var(--nomad-black);
 }
  
-#register-form, #login-form {
+/* #register-form, #login-form {
     display: none;
 }
 
 #register-form[style*='display: block'], #login-form[style*='display: block']{
     display: flex !important;
-}
+} */
 
 
 button, input[type="submit"], input[type="reset"] {
@@ -45,6 +45,10 @@ button, input[type="submit"], input[type="reset"] {
     cursor: pointer;
     outline: inherit;
     box-shadow: 2px 2px 0px var(--nomad-black);
+}
+
+button:disabled {
+    opacity: 0.7;
 }
 
 input[type="text"], input[type="email"], input[type="password"],
