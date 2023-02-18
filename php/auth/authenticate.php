@@ -1,10 +1,10 @@
 <?php
 session_start();
 // Change this to your connection info.
-$DATABASE_HOST = 'phaenyenomad.mysql.db';
-$DATABASE_USER = 'phaenyenomad';
-$DATABASE_PASS = '9UXHcDPqRhfPbZ2J';
-$DATABASE_NAME = 'phaenyenomad';
+$DATABASE_HOST = 'localhost';
+$DATABASE_USER = 'root';
+$DATABASE_PASS = '';
+$DATABASE_NAME = 'nomad_login';
 // Try and connect using the info above.
 $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
 if ( mysqli_connect_errno() ) {
@@ -35,9 +35,9 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
             $_SESSION['loggedin'] = TRUE;
             $_SESSION['name'] = $_POST['username'];
             $_SESSION['id'] = $id;
-            $_SESSION['page'] = './php/game.php';
+            $_SESSION['page'] = './php/game/game.php';
             $_SESSION['message'] = "Connexion réussie !";
-            header('Location: ../index.php');
+            header('Location: ../../index.php');
         } else {
             // Incorrect password
             $_SESSION['message'] = "Nom d'utilisateur ou mot de passe incorrect !";
