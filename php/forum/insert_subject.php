@@ -37,7 +37,6 @@ if (!isset($_SESSION)) {
     session_start();
 }
 $_SESSION['page'] = "./php/forum/insert_subject.php";
-// Change this to your connection info.
 ?>
 <html>
 <head>
@@ -45,8 +44,6 @@ $_SESSION['page'] = "./php/forum/insert_subject.php";
 </head>
 
 <body>
-
-<!-- on fait pointer le formulaire vers la page traitant les données -->
 <form action="./php/forum/insert_subject.php" method="post">
 <table>
 <tr><td>
@@ -75,7 +72,6 @@ $_SESSION['page'] = "./php/forum/insert_subject.php";
 </td></tr></table>
 </form>
 <?php
-// on affiche les erreurs éventuelles
 if (isset($erreur)) echo '<br /><br />',$erreur;
 ?>
 </body>
