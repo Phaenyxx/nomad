@@ -1,0 +1,25 @@
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid var(--nomad-black);
+    background-color: var(--nomad-grey);
+    box-shadow: 4px 4px 0px var(--nomad-black);
+    margin: 20px;
+}
+
+th {
+    border: 1px solid var(--nomad-black);
+    height: 40px;
+}
+
+th.auteur, th.date {
+    width: 15%;
+}
+
+
+td {
+    height: 30px;
+    border: 1px solid var(--nomad-black);
+
+}

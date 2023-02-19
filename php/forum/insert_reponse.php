@@ -1,7 +1,7 @@
 <?php
-print_r($_GET);
-print_r($_POST);
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 // on teste si le formulaire a été soumis
 if (isset ($_POST['submit']) && $_POST['submit']=='Poster') {
     // on teste le contenu de la variable $auteur
@@ -14,14 +14,11 @@ if (isset ($_POST['submit']) && $_POST['submit']=='Poster') {
         }
         // si tout est bon, on peut commencer l'insertion dans la base
         else {
-
+            
             // on se connecte à notre base de données
-            $DATABASE_HOST = 'localhost';
-            $DATABASE_USER = 'root';
-            $DATABASE_PASS = '';
-            $DATABASE_NAME = 'nomad_login';
+            include('../../config.php');
             // Try and connect using the info above.
-            $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+            $con = mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME);
             if ( mysqli_connect_errno() ) {
                 // If there is an error with the connection, stop the script and display the error.
                 exit('Failed to connect to MySQL: ' . mysqli_connect_error());
@@ -52,7 +49,9 @@ if (isset ($_POST['submit']) && $_POST['submit']=='Poster') {
 ?>
 
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 $_SESSION['page'] = "./php/forum/insert_reponse.php?id_sujet=".$_GET['id_sujet'];
 ?>
 <form action="./php/forum/insert_reponse.php?id_sujet=<?php echo $_GET['id_sujet']; ?>" method="post">

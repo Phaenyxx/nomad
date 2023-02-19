@@ -19,6 +19,11 @@ html, body {
     max-height: 100vh;
 }
 
+header {
+    box-shadow: 4px 4px 0px var(--nomad-black);
+
+}
+
 #content {
     display: flex;
     flex-direction: column;
@@ -48,6 +53,12 @@ html, body {
     background-color: var(--nomad-blue);
     box-shadow: 6px 6px 0px var(--nomad-black);
     padding: 20px;
+}
+
+.link {
+    background-color: var(--nomad-taupe);
+    box-shadow: 4px 4px 0px var(--nomad-black);
+    padding: 10px;
 }
 
 h1 {

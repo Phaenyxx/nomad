@@ -1,26 +1,25 @@
 <?php
 
-session_start();
-$_SESSION['page'] = "./php/forum/read_subject.php";
+if (!isset($_SESSION)) {
+    session_start();
+}
+$_SESSION['page'] = "./php/forum/read_subject.php?id_sujet=".$_GET['id_sujet'];
 if (!isset($_GET['id_sujet'])) {
     echo 'Sujet non défini.';
 }
 else {
     ?>
-    <table width="500" border="1"><tr>
-    <td>
+    <table><tr>
+    <th class="auteur">
     Auteur
-    </td><td>
+    </th><th class="text">
     Messages
-    </td></tr>
+    </th></tr>
     <?php
     // on se connecte à notre base de données
-    $DATABASE_HOST = 'localhost';
-    $DATABASE_USER = 'root';
-    $DATABASE_PASS = '';
-    $DATABASE_NAME = 'nomad_login';
+    include('../../config.php');
     // Try and connect using the info above.
-    $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+    $con = mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME);
     if (mysqli_connect_errno()) {
         // If there is an error with the connection, stop the script and display the error.
         exit('Failed to connect to MySQL: ' . mysqli_connect_error());
@@ -45,7 +44,9 @@ else {
             echo '<td>';
             
             // on affiche le nom de l'auteur de sujet ainsi que la date de la réponse
+            echo '<b>';
             echo htmlentities(trim($data['auteur']));
+            echo '</b>';
             echo '<br />';
             echo $jour , '-' , $mois , '-' , $annee , ' ' , $heure , ':' , $minute;
             
