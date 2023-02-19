@@ -17,24 +17,29 @@ header {
 }
 
 #nav ul li a{
+    color: var(--nomad-white);
     text-align: center;
     display: block;
     line-height: 20px;
     background-color: var(--nomad-red);
     padding: 5px;
     box-shadow: 2px 2px 0px var(--nomad-black);
-    transition: 0.3s ease-in-out;
+    transition: 0.2s ease-out;
 }
+#nav ul li a:hover{
+    background-color: var(--nomad-orange);
+}
+
 
 @media screen and (min-width:800px) {
     #nav ul li {
-        width: 10%;
+        min-width: 10%;
     }
 }
 
 @media screen and (min-width:1024px) {
     #nav ul li {
-        width: 15%;
+        min-width: 15%;
     }
 }
 

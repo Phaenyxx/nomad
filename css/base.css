@@ -55,10 +55,15 @@ header {
     padding: 20px;
 }
 
-.link {
+.link{
     background-color: var(--nomad-taupe);
     box-shadow: 4px 4px 0px var(--nomad-black);
     padding: 10px;
+    transition: 0.2s ease-out;
+}
+
+.link:hover{
+    background-color: var(--nomad-grey);
 }
 
 h1 {

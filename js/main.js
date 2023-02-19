@@ -3,7 +3,6 @@ function loadmain(_url){
         url : _url,
         type : 'post',
         success: function(data) {
-            console.log("Bip!");
             $('#content').html(data);
         },
         error: function() {

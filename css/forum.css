@@ -17,9 +17,8 @@ th.auteur, th.date {
     width: 15%;
 }
 
-
 td {
     height: 30px;
     border: 1px solid var(--nomad-black);
-
+    text-align: center;
 }
