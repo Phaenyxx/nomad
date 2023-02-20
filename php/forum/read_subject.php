@@ -41,12 +41,10 @@ else {
         $stmt->free_result();
         $stmt->close();
     }
-    ?>
-    </table>
-    <br /><br />
-    <a href="#" onclick="loadmain('../php/forum/insert_reponse.php?id_sujet=<?php echo $_GET['id_sujet']; ?>')">Répondre</a>
-    <?php
 }
 ?>
-<br /><br />
-<a href="#" onclick="loadmain('./php/forum/forums.php')">Retour à l'accueil</a>
+</table>
+<div class="buttoncontainer">
+<a href="#" class="link" onclick="loadmain('../php/forum/insert_reponse.php?id_sujet=<?php echo $_GET['id_sujet']; ?>')">Répondre</a>
+<a href="#" class="link" onclick="loadmain('./php/forum/forums.php')">Retour à l'accueil</a>
+</div>
