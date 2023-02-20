@@ -28,9 +28,13 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
             header('Location: ../../index.php');
         } else {
             $_SESSION['message'] = "Nom d'utilisateur ou mot de passe incorrect !";
+        $_SESSION['page'] = './php/auth/login.php'
+        header('Location: ../../index.php');
         }
     } else {
         $_SESSION['message'] = "Nom d'utilisateur ou mot de passe incorrect !";
+        $_SESSION['page'] = './php/auth/login.php'
+        header('Location: ../../index.php');
     }
 	$stmt->close();
 }
