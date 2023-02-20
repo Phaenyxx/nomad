@@ -4,26 +4,31 @@ if (!isset($_SESSION)) {
 }
 if (isset ($_POST['submit']) && $_POST['submit']=='Poster') {
     if (!isset($_POST['auteur']) || !isset($_POST['titre'])|| !isset($_POST['tag']) || !isset($_POST['message'])) {
-        $erreur = 'Les variables nécessaires au script ne sont pas définies.';
+        $_SESSION['message'] = 'Les variables nécessaires au script ne sont pas définies.';
+        header('Location: ../../index.php');
     }
     else {
         if (empty($_POST['auteur']) || empty($_POST['titre']) || empty($_POST['message'])) {
-            $erreur = 'Au moins un des champs est vide.';
+            $_SESSION['message'] = 'Au moins un des champs est vide.';
+            header('Location: ../../index.php');
         }
         else {
-            include('../../config.php');
+            include('../../../config.php');
             $con = mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME);
             if ( mysqli_connect_errno() ) {
                 exit('Failed to connect to MySQL: ' . mysqli_connect_error());
             }
             $date = date("Y-m-d H:i:s");
-            if ($stmt = $con->prepare('INSERT INTO forum_subjects VALUES("", "'.$con->escape_string($_POST['auteur']).'", "'.$con->escape_string($_POST['titre']).'", "'.$con->escape_string($_POST['tag']).'" ,"'.$date.'")')) {
+            if ($stmt = $con->prepare('INSERT INTO forum_subjects VALUES( 0, "'.$con->escape_string($_POST['auteur']).'", "'.$con->escape_string($_POST['titre']).'", "'.$con->escape_string($_POST['tag']).'" ,"'.$date.'")')) {
                 $stmt->execute();
                 $id_sujet = $con->insert_id;
                 $stmt2 = $con->prepare('INSERT INTO forum_reponses VALUES("", "'.$con->escape_string($_POST['auteur']).'", "'.$con->escape_string($_POST['message']).'", "'.$date.'", "'.$id_sujet.'")');
                 $stmt2->execute();
-                $stmt->close;
+                $stmt2->close();
                 $_SESSION['page'] = "./php/forum/read_subject.php?id_sujet=".$id_sujet;
+            }
+            else {
+                $_SESSION['message'] = 'Erreur de connexion. Veuillez réessayer.';
             }
             header('Location: ../../index.php');
             exit;

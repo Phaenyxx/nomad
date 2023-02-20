@@ -3,6 +3,14 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+
+function make_clickable($text) {
+    $regex = '#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#';
+    return preg_replace_callback($regex, function ($matches) {
+        return "<a class=\"inlink\" href={$matches[0]}>{$matches[0]}</a>";
+    }, $text);
+}
+
 $_SESSION['page'] = "./php/forum/read_subject.php?id_sujet=".$_GET['id_sujet'];
 if (!isset($_GET['id_sujet'])) {
     echo 'Sujet non défini.';
@@ -16,7 +24,7 @@ else {
     Messages
     </th></tr>
     <?php
-    include('../../config.php');
+    include('../../../config.php');
     $con = mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME);
     if (mysqli_connect_errno()) {
         exit('Failed to connect to MySQL: ' . mysqli_connect_error());
@@ -35,7 +43,7 @@ else {
             echo '<br />';
             echo $jour , '-' , $mois , '-' , $annee , ' ' , $heure , ':' , $minute;
             echo '</td><td>';
-            echo nl2br(htmlentities(trim($data['message'])));
+            echo nl2br(make_clickable(htmlentities(trim($data['message']))));
             echo '</td></tr>';
         }
         $stmt->free_result();

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../../config.php');
+include('../../../config.php');
 $con = mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME);
 if (mysqli_connect_errno()) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
@@ -22,7 +22,8 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
 	$stmt->execute();
 	$stmt->store_result();
 	if ($stmt->num_rows > 0) {
-		echo 'Username exists, please choose another!';
+		$_SESSION['message'] = "Username exists, please choose another!";
+		header('Location: ../../index.php');
 	} else {
 		if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)')) {
 			$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -31,12 +32,14 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
 			$_SESSION['message'] = "Votre compte a été créé avec succés, vous pouvez vous connecter";
 			header('Location: ../../index.php');
 		} else {
-			echo 'Could not prepare statement!';
+			$_SESSION['message'] = "Could not prepare statement!";
+			header('Location: ../../index.php');
 		}
 	}
 	$stmt->close();
 } else {
-	echo 'Could not prepare statement!';
+	$_SESSION['message'] = "Could not prepare statement!";
+	header('Location: ../../index.php');
 }
 $con->close();
 ?>

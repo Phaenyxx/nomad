@@ -11,7 +11,7 @@ if (isset ($_POST['submit']) && $_POST['submit']=='Poster') {
             $erreur = 'Au moins un des champs est vide.';
         }
         else {
-            include('../../config.php');
+            include('../../../config.php');
             $con = mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME);
             if ( mysqli_connect_errno() ) {
                 exit('Failed to connect to MySQL: ' . mysqli_connect_error());

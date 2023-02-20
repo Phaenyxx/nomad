@@ -66,6 +66,13 @@ header {
     background-color: var(--nomad-grey);
 }
 
+
+.inlink{
+    -webkit-text-stroke: 1px var(--nomad-red);
+    text-stroke: 1px var(--nomad-red);
+    text-decoration: underline;
+}
+
 h1 {
     font-family: "Bad Coma", serif;
     font-size: 64pt;
