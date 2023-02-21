@@ -53,6 +53,6 @@ else {
 ?>
 </table>
 <div class="buttoncontainer">
-<a href="#" class="link" onclick="loadmain('../php/forum/insert_reponse.php?id_sujet=<?php echo $_GET['id_sujet']; ?>')">Répondre</a>
+<a href="#" class="link" onclick="loadmain('./php/forum/insert_reponse.php?id_sujet=<?php echo $_GET['id_sujet']; ?>')">Répondre</a>
 <a href="#" class="link" onclick="loadmain('./php/forum/forums.php')">Retour à l'accueil</a>
 </div>
