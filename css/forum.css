@@ -1,11 +1,9 @@
 
 table {
-    width: 80%;
     border-collapse: collapse;
     border: 1px solid var(--nomad-black);
     background-color: var(--nomad-grey);
     box-shadow: 4px 4px 0px var(--nomad-black);
-    margin: 20px;
 }
 
 th {
@@ -13,19 +11,18 @@ th {
     height: 40px;
 }
 
-th.auteur, th.date {
-    width: 15%;
+th.auteur, th.date,
+td.auteur {
+    width: 20%;
 }
 
 td {
     height: 30px;
     border: 1px solid var(--nomad-black);
-    padding-left: 5px;
+    padding: 5px;
 }
 
 td a {
     display: block;
-    width: 100%;
-    height: 100%;
     line-height: 30px;
 }

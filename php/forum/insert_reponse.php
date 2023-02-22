@@ -17,7 +17,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Poster') {
             $date = date("Y-m-d H:i:s");
             include('./img_upload.php');
             $image_name = handle_uploaded_image();
-            $_SESSION['message'] = 'Test :'.$image_name;
+            $_SESSION['message'] = 'Test :' . $image_name;
             if ($stmt = $con->prepare('INSERT INTO forum_subjects VALUES("", ?, ?, ?, ?)')) {
                 $stmt->bind_param("ssss", $_POST['auteur'], $_POST['titre'], $_POST['tag'], $date);
                 $stmt->execute();
@@ -46,14 +46,45 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Poster') {
 }
 ?>
 
+
 <?php
 if (!isset($_SESSION)) {
     session_start();
 }
 
 $_SESSION['page'] = "./php/forum/insert_reponse.php?id_sujet=" . $_GET['id_sujet'];
-?>
 
+include('../../../config.php');
+$con = mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME);
+if (mysqli_connect_errno()) {
+    exit('Failed to connect to MySQL: ' . mysqli_connect_error());
+}
+if ($stmt = $con->prepare('SELECT auteur, message, filename, date_reponse FROM forum_reponses WHERE correspondance_sujet = ? ORDER BY date_reponse DESC')) {
+    $stmt->bind_param('i', $_GET['id_sujet']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $data = $result->fetch_array();
+    sscanf($data['date_reponse'], "%4s-%2s-%2s %2s:%2s:%2s", $annee, $mois, $jour, $heure, $minute, $seconde);
+    echo '<table><tr>';
+    echo '<th colspan="2"> Réponse à :</th></tr>';
+    echo '<tr><td class="auteur">';
+    echo '<b>';
+    echo htmlentities(trim($data['auteur']));
+    echo '</b>';
+    echo '<br />';
+    echo $jour, '-', $mois, '-', $annee, ' ', $heure, ':', $minute;
+    echo '</td><td class="message">';
+    echo nl2br(htmlentities(trim($data['message'])));
+    if (!empty($data['filename'])) {
+        $image_path = './uploads/' . $data['filename'];
+        echo '<img src="' . $image_path . '"><br>';
+    }
+    echo '</td></tr></table>';
+
+    $stmt->free_result();
+    $stmt->close();
+}
+?>
 <form action="./php/forum/insert_reponse.php?id_sujet=<?php echo $_GET['id_sujet']; ?>" method="post"
     enctype="multipart/form-data">
     <table>
@@ -81,3 +112,8 @@ $_SESSION['page'] = "./php/forum/insert_reponse.php?id_sujet=" . $_GET['id_sujet
         </tr>
     </table>
 </form>
+
+<div class="buttoncontainer">
+    <a href="#" class="link"
+        onclick="loadmain('./php/forum/read_subject.php?id_sujet=<?php echo $_GET['id_sujet']; ?>')">Retour</a>
+</div>
