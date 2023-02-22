@@ -1,7 +1,9 @@
 header {
     width: 100%;
     background-color: var(--nomad-beige);
+    box-shadow: 4px 4px 0px var(--nomad-black);
 }
+
 #nav ul {
     padding: 0;
     display: flex;

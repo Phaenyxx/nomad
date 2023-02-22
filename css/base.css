@@ -16,20 +16,30 @@ html, body {
     margin: 0;
     background-color: var(--nomad-white);
     max-width: 100vw;
-    max-height: 100vh;
+    height: 100vh;
 }
 
-header {
-    box-shadow: 4px 4px 0px var(--nomad-black);
-
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
+
+
 
 #content {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     padding: 20px;
+    justify-content: flex-start;
+}
+
+footer {
+    background-color: var(--nomad-emerald);
+    height: 40px;
 }
 
 #message-box {

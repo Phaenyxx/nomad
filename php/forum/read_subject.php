@@ -44,10 +44,10 @@ else {
             echo $jour , '-' , $mois , '-' , $annee , ' ' , $heure , ':' , $minute;
             echo '</td><td>';
             if (!empty($data['filename'])) {
-                echo '<div class="img-msg"><div>';
+                echo '<div class="img-msg"><span>';
                 echo nl2br(make_clickable(htmlentities(trim($data['message']))));
                 $image_path = './uploads/' . $data['filename'];
-                echo '</div><img src="' . $image_path . '"></div>';
+                echo '</span><a href="'. $image_path.'"><img src="' . $image_path . '"></a></div>';
             } else {
             echo nl2br(make_clickable(htmlentities(trim($data['message']))));
             }

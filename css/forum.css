@@ -26,3 +26,16 @@ td a {
     display: block;
     line-height: 30px;
 }
+
+.img-msg {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img-msg a,
+.img-msg a img {
+    max-width: 200px;
+    max-height: 200px;
+}

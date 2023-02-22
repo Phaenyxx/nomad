@@ -21,6 +21,7 @@ include 'html/head.html';
         loadmain("<?=$_SESSION['page'] ?>");
     </script>
     <?php
+    include 'html/footer.html';
     if (isset($_SESSION['message'])):?>
         <script type="text/javascript">
             print_message("<?=$_SESSION['message'] ?>");

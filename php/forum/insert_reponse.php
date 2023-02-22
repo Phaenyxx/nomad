@@ -75,11 +75,11 @@ if ($stmt = $con->prepare('SELECT auteur, message, filename, date_reponse FROM f
     echo '</td><td class="message">';
     if (!empty($data['filename'])) {
         echo '<div class="img-msg">';
-        echo nl2br(make_clickable(htmlentities(trim($data['message']))));
+        echo nl2br(htmlentities(trim($data['message'])));
         $image_path = './uploads/' . $data['filename'];
-        echo '<img src="' . $image_path . '"></div>';
+        echo '<a href="'. $image_path.'"><img src="' . $image_path . '"></a></div>';
     } else {
-    echo nl2br(make_clickable(htmlentities(trim($data['message']))));
+    echo nl2br(htmlentities(trim($data['message'])));
     }
     echo '</td></tr></table>';
 

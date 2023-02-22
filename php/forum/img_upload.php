@@ -4,8 +4,8 @@ function handle_uploaded_image()
     $image_path = null;
     if (isset($_FILES['image']) && !empty($_FILES['image']['name'])) {
         // Define the maximum image dimensions
-        $max_width = 600;
-        $max_height = 400;
+        $max_width = 1200;
+        $max_height = 800;
 
         // Get the image file extension and create a new filename
         $image_info = getimagesize($_FILES['image']['tmp_name']);
