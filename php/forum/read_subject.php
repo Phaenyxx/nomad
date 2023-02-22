@@ -20,7 +20,7 @@ else {
     <table><tr>
     <th class="auteur">
     Auteur
-    </th><th class="text">
+    </th><th class="text" colspan="2">
     Messages
     </th></tr>
     <?php
@@ -43,10 +43,13 @@ else {
             echo '<br />';
             echo $jour , '-' , $mois , '-' , $annee , ' ' , $heure , ':' , $minute;
             echo '</td><td>';
-            echo nl2br(make_clickable(htmlentities(trim($data['message']))));
             if (!empty($data['filename'])) {
+                echo '<div class="img-msg"><div>';
+                echo nl2br(make_clickable(htmlentities(trim($data['message']))));
                 $image_path = './uploads/' . $data['filename'];
-                echo '<img src="' . $image_path . '"><br>';
+                echo '</div><img src="' . $image_path . '"></div>';
+            } else {
+            echo nl2br(make_clickable(htmlentities(trim($data['message']))));
             }
             echo '</td></tr>';
         }

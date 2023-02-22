@@ -17,7 +17,6 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Poster') {
             $date = date("Y-m-d H:i:s");
             include('./img_upload.php');
             $image_name = handle_uploaded_image();
-            $_SESSION['message'] = 'Test :' . $image_name;
             if ($stmt = $con->prepare('INSERT INTO forum_subjects VALUES("", ?, ?, ?, ?)')) {
                 $stmt->bind_param("ssss", $_POST['auteur'], $_POST['titre'], $_POST['tag'], $date);
                 $stmt->execute();
@@ -74,10 +73,13 @@ if ($stmt = $con->prepare('SELECT auteur, message, filename, date_reponse FROM f
     echo '<br />';
     echo $jour, '-', $mois, '-', $annee, ' ', $heure, ':', $minute;
     echo '</td><td class="message">';
-    echo nl2br(htmlentities(trim($data['message'])));
     if (!empty($data['filename'])) {
+        echo '<div class="img-msg">';
+        echo nl2br(make_clickable(htmlentities(trim($data['message']))));
         $image_path = './uploads/' . $data['filename'];
-        echo '<img src="' . $image_path . '"><br>';
+        echo '<img src="' . $image_path . '"></div>';
+    } else {
+    echo nl2br(make_clickable(htmlentities(trim($data['message']))));
     }
     echo '</td></tr></table>';
 

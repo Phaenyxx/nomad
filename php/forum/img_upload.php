@@ -13,21 +13,21 @@ function handle_uploaded_image()
         $image_name = uniqid('image_');
 
         // Resize the image to fit within the maximum dimensions
-        $image_resource = null;
+        $img_src = null;
         switch ($image_info[2]) {
             case IMAGETYPE_JPEG:
-                $image_resource = imagecreatefromjpeg($_FILES['image']['tmp_name']);
+                $img_src = imagecreatefromjpeg($_FILES['image']['tmp_name']);
                 break;
             case IMAGETYPE_PNG:
-                $image_resource = imagecreatefrompng($_FILES['image']['tmp_name']);
+                $img_src = imagecreatefrompng($_FILES['image']['tmp_name']);
                 break;
             case IMAGETYPE_WEBP:
-                $image_resource = imagecreatefromwebp($_FILES['image']['tmp_name']);
+                $img_src = imagecreatefromwebp($_FILES['image']['tmp_name']);
                 break;
         }
-        if ($image_resource) {
-            $original_width = imagesx($image_resource);
-            $original_height = imagesy($image_resource);
+        if ($img_src) {
+            $original_width = imagesx($img_src);
+            $original_height = imagesy($img_src);
             $new_width = $original_width;
             $new_height = $original_height;
             if ($original_width > $max_width) {
@@ -38,12 +38,17 @@ function handle_uploaded_image()
                 $new_height = $max_height;
                 $new_width = $new_height * $original_width / $original_height;
             }
-            $resized_image_resource = imagecreatetruecolor($new_width, $new_height);
-            imagecopyresampled($resized_image_resource, $image_resource, 0, 0, 0, 0, $new_width, $new_height, $original_width, $original_height);
-            imagedestroy($image_resource);
+            $img = imagecreatetruecolor($new_width, $new_height);
+            imagealphablending($img, false);
+            $col = imagecolorallocatealpha($img, 0, 0, 0, 127);
+            imagefilledrectangle($img, 0, 0, $new_width, $new_height, $col);
+            imagealphablending($img, true);
+            imagecopyresampled($img, $img_src, 0, 0, 0, 0, $new_width, $new_height, $original_width, $original_height);
+            imagedestroy($img_src);
             $image_path = '../../uploads/' . $image_name . '.png';
-            imagepng($resized_image_resource, $image_path);
-            imagedestroy($resized_image_resource);
+            imagesavealpha( $img, true );
+            imagepng($img, $image_path);
+            imagedestroy($img);
         }
     }
     return $image_name;
