@@ -1,77 +1,94 @@
-function loadmain(_url){
-    $.ajax({
-        url : _url,
-        type : 'post',
-        success: function(data) {
-            $('#content').html(data);
-        },
-        error: function() {
-            $('#content').text('Une erreur s\'est produite, veuillez recharger la page');
+function loadmain(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            document.getElementById('content').innerHTML = xhr.responseText;
+        } else {
+            document.getElementById('content').textContent = 'Une erreur s\'est produite, veuillez recharger la page';
         }
-    });
+    };
+    xhr.onerror = function() {
+        document.getElementById('content').textContent = 'Une erreur s\'est produite, veuillez recharger la page';
+    };
+    xhr.send();
 }
 
-function switch_form(type, _url){
-    if (type == 'login') {
-        $("#logbutton").prop("disabled", true);
-        $("#regbutton").prop("disabled", false);
-        $.ajax({
-            url : _url,
-            type : 'post',
-            success: function(data) {
-                $('#form_container').html(data);
-            },
-            error: function() {
-                $('#content').text('Une erreur s\'est produite, veuillez recharger la page');
-            }
-        });
+function hideMessageBox() {
+    var messageBox = document.getElementById("message-box");
+    messageBox.style.display = "none";
+}
+
+function switch_form(type, url) {
+    var logButton = document.getElementById('logbutton');
+    var regButton = document.getElementById('regbutton');
+    var formContainer = document.getElementById('form_container');
+    
+    if (type === 'login') {
+        logButton.disabled = true;
+        regButton.disabled = false;
+    } else if (type === 'register') {
+        logButton.disabled = false;
+        regButton.disabled = true;
     }
-    else if (type == 'register') {
-        $("#logbutton").prop("disabled", false);
-        $("#regbutton").prop("disabled", true);
-        $.ajax({
-            url : _url,
-            type : 'post',
-            success: function(data) {
-                $('#form_container').html(data);
-            },
-            error: function() {
-                $('#content').text('Une erreur s\'est produite, veuillez recharger la page');
-            }
-        });
-    }
-};
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            formContainer.innerHTML = xhr.responseText;
+        } else {
+            document.getElementById('content').textContent = 'Une erreur s\'est produite, veuillez recharger la page';
+        }
+    };
+    xhr.onerror = function() {
+        document.getElementById('content').textContent = 'Une erreur s\'est produite, veuillez recharger la page';
+    };
+    xhr.send();
+}
 
 function print_message(input) {
-    var msg = "<div id=\"message\">" + input + "</div>";
-    $('#message-box').show().html(msg);
-};
+    var msg = '<div id="message">' + input + '</div>';
+    document.getElementById('message-box').style.display = 'block';
+    document.getElementById('message-box').innerHTML = msg;
+}
 
 function check_match(input) {
     var input2;
+    
     switch (input.name) {
         case 'email':
-        input2 = $("#email-verif")[0];
+        input2 = document.getElementById('email-verif');
         break;
         case 'email-verif':
-        input2 = $("#email")[0];
+        input2 = document.getElementById('email');
         break;
         case 'password-verif':
-        input2 = $("#password")[0];
+        input2 = document.getElementById('password');
         break;
         case 'password':
-        input2 = $("#password-verif")[0];
+        input2 = document.getElementById('password-verif');
         break;
     }
     
-    if (input.value != input2.value) {
+    if (input.value !== input2.value) {
         input.setCustomValidity('Les champs doivent être identiques');
-        input2.setCustomValidity('Les champs doivent être identiques')
+        input2.setCustomValidity('Les champs doivent être identiques');
     } else {
         input.setCustomValidity('');
         input2.setCustomValidity('');
     }
-};
+}
 
-$(document).ready(function(){
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("bip1");
+    const parentElement = document.getElementById("content");
+    parentElement.addEventListener("click", function(event) {
+        const toggleUploadButton = event.target.closest("#toggle-upload");
+        if (toggleUploadButton) {
+            const uploadInput = document.getElementById("upload-input");
+            uploadInput.style.display = uploadInput.style.display === "none" ? "block" : "none";
+            toggleUploadButton.textContent = uploadInput.style.display === "none" ? "Ajouter une image" : "Annuler";
+        }
+    });
 });

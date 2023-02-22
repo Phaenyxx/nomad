@@ -29,7 +29,7 @@ else {
     if (mysqli_connect_errno()) {
         exit('Failed to connect to MySQL: ' . mysqli_connect_error());
     }
-    if ($stmt = $con->prepare('SELECT auteur, message, date_reponse FROM forum_reponses WHERE correspondance_sujet = ? ORDER BY date_reponse ASC')) {
+    if ($stmt = $con->prepare('SELECT auteur, message, filename, date_reponse FROM forum_reponses WHERE correspondance_sujet = ? ORDER BY date_reponse ASC')) {
         $stmt->bind_param('i', $_GET['id_sujet']);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -44,6 +44,10 @@ else {
             echo $jour , '-' , $mois , '-' , $annee , ' ' , $heure , ':' , $minute;
             echo '</td><td>';
             echo nl2br(make_clickable(htmlentities(trim($data['message']))));
+            if (!empty($data['filename'])) {
+                $image_path = './uploads/' . $data['filename'];
+                echo '<img src="' . $image_path . '"><br>';
+            }
             echo '</td></tr>';
         }
         $stmt->free_result();
@@ -53,6 +57,6 @@ else {
 ?>
 </table>
 <div class="buttoncontainer">
-<a href="#" class="link" onclick="loadmain('../php/forum/insert_reponse.php?id_sujet=<?php echo $_GET['id_sujet']; ?>')">Répondre</a>
+<a href="#" class="link" onclick="loadmain('./php/forum/insert_reponse.php?id_sujet=<?php echo $_GET['id_sujet']; ?>')">Répondre</a>
 <a href="#" class="link" onclick="loadmain('./php/forum/forums.php')">Retour à l'accueil</a>
 </div>

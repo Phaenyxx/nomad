@@ -69,7 +69,6 @@ header {
 
 .inlink{
     -webkit-text-stroke: 1px var(--nomad-red);
-    text-stroke: 1px var(--nomad-red);
     text-decoration: underline;
 }
 

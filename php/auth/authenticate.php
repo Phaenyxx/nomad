@@ -4,16 +4,16 @@ if (!isset($_SESSION)) {
 }
 include('../../../config.php');
 $con = mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME);
-if ( mysqli_connect_errno() ) {
-	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
+if (mysqli_connect_errno()) {
+    exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
-if ( !isset($_POST['username'], $_POST['password']) ) {
-	exit('Please fill both the username and password fields!');
+if (!isset($_POST['username'], $_POST['password'])) {
+    exit('Please fill both the username and password fields!');
 }
 if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?')) {
-	$stmt->bind_param('s', $_POST['username']);
-	$stmt->execute();
-	$stmt->store_result();
+    $stmt->bind_param('s', $_POST['username']);
+    $stmt->execute();
+    $stmt->store_result();
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($id, $password);
         $stmt->fetch();
@@ -27,14 +27,14 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
             header('Location: ../../index.php');
         } else {
             $_SESSION['message'] = "Nom d'utilisateur ou mot de passe incorrect !";
-        $_SESSION['page'] = './php/auth/login.php';
-        header('Location: ../../index.php');
+            $_SESSION['page'] = './php/auth/login.php';
+            header('Location: ../../index.php');
         }
     } else {
         $_SESSION['message'] = "Nom d'utilisateur ou mot de passe incorrect !";
         $_SESSION['page'] = './php/auth/login.php';
         header('Location: ../../index.php');
     }
-	$stmt->close();
+    $stmt->close();
 }
 ?>
