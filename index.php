@@ -16,7 +16,7 @@ include 'html/head.html';
     include 'php/header.php';
     ?>
     <div id="content"></div>
-    <div id="message-box" onclick="$('#message-box').hide()"></div>
+    <div id="message-box" onclick="hideMessageBox()"></div>
     <script type="text/javascript">
         loadmain("<?=$_SESSION['page'] ?>");
     </script>

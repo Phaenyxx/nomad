@@ -10,7 +10,7 @@ function handle_uploaded_image()
         // Get the image file extension and create a new filename
         $image_info = getimagesize($_FILES['image']['tmp_name']);
         $image_extension = image_type_to_extension($image_info[2], false);
-        $image_filename = uniqid('image_');
+        $image_name = uniqid('image_');
 
         // Resize the image to fit within the maximum dimensions
         $image_resource = null;
@@ -20,9 +20,6 @@ function handle_uploaded_image()
                 break;
             case IMAGETYPE_PNG:
                 $image_resource = imagecreatefrompng($_FILES['image']['tmp_name']);
-                break;
-            case IMAGETYPE_GIF:
-                $image_resource = imagecreatefromgif($_FILES['image']['tmp_name']);
                 break;
             case IMAGETYPE_WEBP:
                 $image_resource = imagecreatefromwebp($_FILES['image']['tmp_name']);
@@ -44,21 +41,11 @@ function handle_uploaded_image()
             $resized_image_resource = imagecreatetruecolor($new_width, $new_height);
             imagecopyresampled($resized_image_resource, $image_resource, 0, 0, 0, 0, $new_width, $new_height, $original_width, $original_height);
             imagedestroy($image_resource);
-
-            // Convert the image to PNG/APNG
-            if ($image_extension === 'gif') {
-                $image_path = '../../uploads/' . $image_filename . '.apng';
-                imagepalettetotruecolor($resized_image_resource);
-                imagealphablending($resized_image_resource, false);
-                imagesavealpha($resized_image_resource, true);
-                apng_encode($resized_image_resource, $image_path);
-            } else {
-                $image_path = '../../uploads/' . $image_filename . '.png';
-                imagepng($resized_image_resource, $image_path);
-            }
+            $image_path = '../../uploads/' . $image_name . '.png';
+            imagepng($resized_image_resource, $image_path);
             imagedestroy($resized_image_resource);
         }
     }
-    return $image_path;
+    return $image_name;
 }
 ?>

@@ -15,15 +15,16 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Poster') {
                 exit('Failed to connect to MySQL: ' . mysqli_connect_error());
             }
             $date = date("Y-m-d H:i:s");
-            include('./php/forum/img_upload.php');
-            $image_path = handle_uploaded_image();
+            include('./img_upload.php');
+            $image_name = handle_uploaded_image();
+            $_SESSION['message'] = 'Test :'.$image_name;
             if ($stmt = $con->prepare('INSERT INTO forum_subjects VALUES("", ?, ?, ?, ?)')) {
                 $stmt->bind_param("ssss", $_POST['auteur'], $_POST['titre'], $_POST['tag'], $date);
                 $stmt->execute();
                 $id_sujet = $con->insert_id;
-                if ($image_path) {
+                if ($image_name) {
                     $stmt2 = $con->prepare('INSERT INTO forum_reponses VALUES("", ?, ?, ?, ?, ?)');
-                    $stmt2->bind_param("ssssi", $_POST['auteur'], $_POST['message'], $image_filename, $date, $_GET['id_sujet']);
+                    $stmt2->bind_param("ssssi", $_POST['auteur'], $_POST['message'], $image_name, $date, $_GET['id_sujet']);
                 } else {
                     $stmt2 = $con->prepare('INSERT INTO forum_reponses VALUES("", ?, ?, NULL, ?, ?)');
                     $stmt2->bind_param("sssi", $_POST['auteur'], $_POST['message'], $date, $_GET['id_sujet']);
