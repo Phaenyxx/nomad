@@ -1,12 +1,15 @@
 
 table {
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
+    border-spacing:0px;
+    border-style: none;
     border: 1px solid var(--nomad-black);
-    background-color: var(--nomad-grey);
+    background-color: var(--nomad-white);
     box-shadow: 4px 4px 0px var(--nomad-black);
 }
 
 th {
+    background-color: var(--nomad-white);
     border: 1px solid var(--nomad-black);
     height: 40px;
 }
@@ -17,7 +20,9 @@ td.auteur {
 }
 
 td {
+    position: relative;
     height: 30px;
+    background-color: var(--nomad-white);
     border: 1px solid var(--nomad-black);
     padding: 5px;
 }
@@ -34,8 +39,8 @@ td a {
     align-items: center;
 }
 
-.img-msg a,
 .img-msg a img {
     max-width: 200px;
     max-height: 200px;
+    filter: drop-shadow(2px 2px 0px var(--nomad-black));
 }

@@ -34,7 +34,7 @@ if ($nb_sujets == 0) {
 			echo '<tr>';
 			echo '<td>';
 			echo htmlentities(trim($data['auteur']));
-			echo '</td><td>';
+			echo '</td><td class="linkbox">';
 			echo '<a href="#" onclick="loadmain(\'./php/forum/read_subject.php?id_sujet=', $data['id'], '\')">', htmlentities(trim($data['titre'])), '</a>';
 			echo '</td><td>';
 			echo $jour, '-', $mois, '-', $annee, ' ', $heure, ':', $minute;
@@ -47,6 +47,6 @@ $con->close();
 	</tr>
 </table>
 <div class="buttoncontainer">
-	<a class="link" href="#" onclick="loadmain('./php/forum/insert_subject.php')">Insérer un sujet </a>
-	<a class="link" href="../../index.php">Retour à l'accueil</a>
+	<a class="link linkbox" href="#" onclick="loadmain('./php/forum/insert_subject.php')">Insérer un sujet </a>
+	<a class="link linkbox" href="#" onclick="loadmain('./php/game/game.php')">Retour au jeu</a>
 </div>

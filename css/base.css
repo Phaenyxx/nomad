@@ -14,7 +14,7 @@ a {
 html, body {
     /* overflow-x: hidden; */
     margin: 0;
-    background-color: var(--nomad-white);
+    background-color: var(--nomad-sienna);
     max-width: 100vw;
     height: 100vh;
 }
@@ -76,6 +76,22 @@ footer {
 
 .link:hover{
     background-color: var(--nomad-grey);
+}
+
+.linkbox{
+    position: relative;
+    transition: 0.1s ease;
+}
+
+.linkbox:hover{
+        transform: translate(-4px, -4px);
+        box-shadow: 1px 1px 0px var(--nomad-black),
+                    2px 2px 0px var(--nomad-black),
+                    3px 3px 0px var(--nomad-black),
+                    4px 4px 0px var(--nomad-black),
+                    5px 5px 0px var(--nomad-black),
+                    6px 6px 0px var(--nomad-black);
+
 }
 
 

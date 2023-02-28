@@ -7,7 +7,7 @@ if (!isset($_SESSION)) {
 function make_clickable($text) {
     $regex = '#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#';
     return preg_replace_callback($regex, function ($matches) {
-        return "<a class=\"inlink\" href={$matches[0]}>{$matches[0]}</a>";
+        return "<a class=\"inlink\" href={$matches[0]} target=\"_blank\" rel=\"noopener noreferrer\">{$matches[0]}</a>";
     }, $text);
 }
 
@@ -47,7 +47,7 @@ else {
                 echo '<div class="img-msg"><span>';
                 echo nl2br(make_clickable(htmlentities(trim($data['message']))));
                 $image_path = './uploads/' . $data['filename'];
-                echo '</span><a href="'. $image_path.'"><img src="' . $image_path . '"></a></div>';
+                echo '</span><a href="'. $image_path.'" target="_blank"><img src="' . $image_path . '"></a></div>';
             } else {
             echo nl2br(make_clickable(htmlentities(trim($data['message']))));
             }

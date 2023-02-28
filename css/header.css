@@ -18,18 +18,15 @@ header {
     padding: 10px;
 }
 
-#nav ul li a{
-    color: var(--nomad-white);
-    text-align: center;
-    display: block;
-    line-height: 20px;
-    background-color: var(--nomad-red);
-    padding: 5px;
-    box-shadow: 2px 2px 0px var(--nomad-black);
-    transition: 0.2s ease-out;
-}
-#nav ul li a:hover{
-    background-color: var(--nomad-orange);
+.navlink {
+position: relative;
+color: var(--nomad-white);
+background-color: var(--nomad-red);
+text-align: center;
+box-shadow: 2px 2px 0px var(--nomad-black);
+padding: 5px;
+display: block;
+line-height: 20px;
 }
 
 
