@@ -33,7 +33,7 @@ function switch_form(type, url) {
     }
     
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', url + '?cache=' + Math.random(), true);
+    xhr.open('GET', url, true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             formContainer.innerHTML = xhr.responseText;
