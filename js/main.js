@@ -33,7 +33,7 @@ function switch_form(type, url) {
     }
     
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
+    xhr.open('GET', url + '?cache=' + Math.random(), true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             formContainer.innerHTML = xhr.responseText;
@@ -81,7 +81,6 @@ function check_match(input) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("bip1");
     const parentElement = document.getElementById("content");
     parentElement.addEventListener("click", function(event) {
         const toggleUploadButton = event.target.closest("#toggle-upload");

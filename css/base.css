@@ -83,7 +83,7 @@ footer {
     transition: 0.1s ease;
 }
 
-.linkbox:hover{
+.linkbox:hover:not(:disabled){
         transform: translate(-4px, -4px);
         box-shadow: 1px 1px 0px var(--nomad-black),
                     2px 2px 0px var(--nomad-black),
