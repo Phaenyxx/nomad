@@ -1,0 +1,83 @@
+#map-container {
+    display: flex;
+    gap : 5px;
+    flex-direction: column;
+    align-items: center;
+}
+
+#map-container .buttoncontainer .link{
+    --cell-size: 40px;
+    height: var(--cell-size);
+    width: var(--cell-size);
+    background-color: var(--nomad-beige);
+    padding: 2px;
+    line-height: var(--cell-size);
+}
+
+.row {
+    display: flex;
+    gap : 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+#map,
+#minimap {
+    background-color: var(--nomad-dark);
+    /* border-image: url("../assets/ui/border.png") 3 3 3 3 / 3px 3px stretch; */
+    border-spacing: 0px;
+    padding: 5px;
+    box-shadow: 1px 1px 0px var(--nomad-black),
+        2px 2px 0px var(--nomad-black),
+        3px 3px 0px var(--nomad-black),
+        4px 4px 0px var(--nomad-black),
+        5px 5px 0px var(--nomad-black),
+        6px 6px 0px var(--nomad-black);
+    border-collapse: separate;
+}
+
+#minimap {
+    position: absolute;
+    top: 0;
+    transform: translateX(50%);
+}
+
+#map td {
+
+    --cell-size: 40px;
+    height: var(--cell-size);
+    width: var(--cell-size);
+    max-width: var(--cell-size);
+    border: 1px solid var(--nomad-black);
+    background-color: var(--nomad-emerald);
+
+    background-position: center;
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+}
+
+#minimap td {
+
+    --cell-size: 16px;
+    height: var(--cell-size);
+    width: var(--cell-size);
+    max-width: var(--cell-size);
+    border: 1px solid var(--nomad-black);
+    background-color: var(--nomad-emerald);
+
+    background-position: center;
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+}
+
+#map-popup {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition-property: opacity, transform;
+    transition-duration: 0.3s;
+}
+
+#map-popup.visible {
+    opacity: 1;
+    transform: none;
+}

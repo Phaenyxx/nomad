@@ -17,7 +17,7 @@ if (!isset($_GET['id_sujet'])) {
 }
 else {
     ?>
-    <table><tr>
+    <table id="forum-msg"><tr>
     <th class="auteur">
     Auteur
     </th><th class="text" colspan="2">

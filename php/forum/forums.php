@@ -16,7 +16,7 @@ if ($nb_sujets == 0) {
 	echo '<h1>AUCUN SUJET</h1>';
 } else {
 	?>
-	<table>
+	<table id="forum-list">
 		<tr>
 			<th class="auteur">
 				Auteur

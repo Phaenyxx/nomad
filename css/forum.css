@@ -1,5 +1,5 @@
 
-table {
+#forum-list, #forum-msg {
     /* border-collapse: collapse; */
     border-spacing:0px;
     border-style: none;
@@ -19,7 +19,7 @@ td.auteur {
     width: 20%;
 }
 
-td {
+#forum-list td, #forum-msg td{
     position: relative;
     height: 30px;
     background-color: var(--nomad-white);
@@ -27,7 +27,7 @@ td {
     padding: 5px;
 }
 
-td a {
+#forum-list td a, #forum-msg td a {
     display: block;
     line-height: 30px;
 }
