@@ -62,7 +62,7 @@
     height: var(--cell-size);
     width: var(--cell-size);
     max-width: var(--cell-size);
-    border: 1px solid var(--nomad-black);
+    border: none;
     background-color: var(--nomad-emerald);
 
     background-position: center;
@@ -72,12 +72,10 @@
 
 #map-popup {
     opacity: 0;
-    transform: translateY(-10px);
-    transition-property: opacity, transform;
+    transition-property: opacity;
     transition-duration: 0.3s;
 }
 
 #map-popup.visible {
     opacity: 1;
-    transform: none;
 }

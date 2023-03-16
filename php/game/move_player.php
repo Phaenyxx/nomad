@@ -19,10 +19,10 @@ if (mysqli_connect_errno()) {
 // Step 4: Prepare and execute a SELECT query on the 'map' table to retrieve the current cell and the cell corresponding to the player's new position based on the direction they want to move in
 if ($direction === 'up') {
     $new_position_x = $position_x;
-    $new_position_y = $position_y + 1;
+    $new_position_y = $position_y - 1;
 } elseif ($direction === 'down') {
     $new_position_x = $position_x;
-    $new_position_y = $position_y - 1;
+    $new_position_y = $position_y + 1;
 } elseif ($direction === 'left') {
     $new_position_x = $position_x - 1;
     $new_position_y = $position_y;
