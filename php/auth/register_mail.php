@@ -1,5 +1,8 @@
 <?php
-include('../../../config.php');
+session_start();
+if (!isset($_SESSION['msg']))
+  $_SESSION['msg'] = array();
+include_once('../../../config.php');
 $con = mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME);
 if (mysqli_connect_errno()) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
@@ -21,7 +24,7 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
 	$stmt->execute();
 	$stmt->store_result();
 	if ($stmt->num_rows > 0) {
-		$_SESSION['message'] = "Ce nom d'utilisateur existe déjà, veuillez en choisir un autre !";
+		array_push($_SESSION['msg'], "Ce nom d'utilisateur existe déjà, veuillez en choisir un autre !");
 	} else {
 		if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email, activation_code) VALUES (?, ?, ?, ?)')) {
 			$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -34,7 +37,7 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
 			$activate_link = 'http://yourdomain.com/phplogin/activate.php?email=' . $_POST['email'] . '&code=' . $uniqid;
 			$message = '<p>Please click the following link to activate your account: <a href="' . $activate_link . '">' . $activate_link . '</a></p>';
 			mail($_POST['email'], $subject, $message, $headers);
-			$_SESSION['message'] = "Veuillez vérifier vos mails pour activer votre compte !";
+			array_push($_SESSION['msg'], "Veuillez vérifier vos mails pour activer votre compte !");
 			header('Location: ../../index.php');
 		} else {
 			echo 'Could not prepare statement!';

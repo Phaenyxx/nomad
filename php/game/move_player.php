@@ -1,9 +1,8 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-    include_once('../../../config.php');
-    include('./char_info.php');
-}
+session_start();
+include_once('../../../config.php');
+include_once('./char_info.php');
+
 
 $position_x = $_SESSION['character']['position_x'];
 $position_y = $_SESSION['character']['position_y'];
@@ -45,7 +44,7 @@ if ($result->num_rows > 0) {
         $_SESSION['character']['position_x'] = $new_position_x;
         $_SESSION['character']['position_y'] = $new_position_y;
         $stmt = $con->prepare("UPDATE persos SET position_x = ?, position_y = ? WHERE username = ?");
-        $stmt->bind_param("iis", $new_position_x, $new_position_y, $id);
+        $stmt->bind_param("iis", $new_position_x, $new_position_y, $_SESSION['name']);
         $stmt->execute();
     }
 }

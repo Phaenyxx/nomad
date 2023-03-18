@@ -1,9 +1,9 @@
 <?php
-if (!isset($_SESSION)) {
-	session_start();
-}
+session_start();
+if (!isset($_SESSION['msg']))
+  $_SESSION['msg'] = array();
 $_SESSION['page'] = "./php/forum/forums.php";
-include('../../../config.php');
+include_once('../../../config.php');
 $con = mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME);
 if (mysqli_connect_errno()) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());

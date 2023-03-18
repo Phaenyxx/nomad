@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="FR-fr">
 <?php
+session_start();
+if (!isset($_SESSION['msg']))
+    $_SESSION['msg'] = array();
+if (!isset($_SESSION['page']))
+    $_SESSION['page'] = './html/accueil.html';
+
 include 'html/head.html';
 ?>
 
@@ -10,10 +16,6 @@ include 'html/head.html';
 
 <body>
     <?php
-    session_start();
-    if (!isset($_SESSION['page']))
-        $_SESSION['page'] = './html/accueil.html';
-
     include 'php/header.php';
     ?>
     <div id="content"></div>
@@ -23,12 +25,12 @@ include 'html/head.html';
     </script>
     <?php
     include 'html/footer.html';
-    if (isset($_SESSION['message'])): ?>
+    if (count($_SESSION['msg']) > 0): ?>
         <script type="text/javascript">
-            print_message("<?= $_SESSION['message'] ?>");
+            print_message(<?php echo json_encode($_SESSION['msg']); ?>);
         </script>
         <?php
-        $_SESSION['message'] = NULL;
+        array_splice($_SESSION['msg'], 0);
     endif; ?>
 </body>
 

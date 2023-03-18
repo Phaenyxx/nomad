@@ -1,7 +1,7 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-}
+session_start();
+if (!isset($_SESSION['msg']))
+  $_SESSION['msg'] = array();
 if (isset($_POST['submit']) && $_POST['submit'] == 'Poster') {
     if (!isset($_POST['auteur']) || !isset($_POST['message']) || !isset($_GET['id_sujet'])) {
         $erreur = 'Les variables nécessaires au script ne sont pas définies.';
@@ -9,13 +9,13 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Poster') {
         if (empty($_POST['auteur']) || empty($_POST['message']) || empty($_GET['id_sujet'])) {
             $erreur = 'Au moins un des champs est vide.';
         } else {
-            include('../../../config.php');
+            include_once('../../../config.php');
             $con = mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME);
             if (mysqli_connect_errno()) {
                 exit('Failed to connect to MySQL: ' . mysqli_connect_error());
             }
             $date = date("Y-m-d H:i:s");
-            include('./img_upload.php');
+            include_once('./img_upload.php');
             $image_name = handle_uploaded_image();
             if ($stmt = $con->prepare('INSERT INTO forum_subjects VALUES("", ?, ?, ?, ?)')) {
                 $stmt->bind_param("ssss", $_POST['auteur'], $_POST['titre'], $_POST['tag'], $date);
@@ -47,13 +47,15 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Poster') {
 
 
 <?php
+session_start();
 if (!isset($_SESSION)) {
-    session_start();
+    if (!isset($_SESSION['msg']))
+        $_SESSION['msg'] = array();
 }
 
 $_SESSION['page'] = "./php/forum/insert_reponse.php?id_sujet=" . $_GET['id_sujet'];
 
-include('../../../config.php');
+include_once('../../../config.php');
 $con = mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME);
 if (mysqli_connect_errno()) {
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());

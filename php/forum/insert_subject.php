@@ -1,22 +1,22 @@
 <?php
-if (!isset($_SESSION)) {
-  session_start();
-}
+session_start();
+if (!isset($_SESSION['msg']))
+  $_SESSION['msg'] = array();
 if (isset($_POST['submit']) && $_POST['submit'] == 'Poster') {
   if (!isset($_POST['auteur']) || !isset($_POST['titre']) || !isset($_POST['tag']) || !isset($_POST['message'])) {
-    $_SESSION['message'] = 'Les variables nécessaires au script ne sont pas définies.';
+    array_push($_SESSION['msg'], 'Les variables nécessaires au script ne sont pas définies.');
   } else {
     if (empty($_POST['auteur']) || empty($_POST['titre']) || empty($_POST['message'])) {
-      $_SESSION['message'] = 'Au moins un des champs est vide.';
+      array_push($_SESSION['msg'], 'Au moins un des champs est vide.');
     } else {
-      include('../../../config.php');
+      include_once('../../../config.php');
       $con = mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME);
       if (mysqli_connect_errno()) {
         exit('Failed to connect to MySQL: ' . mysqli_connect_error());
       }
       $date = date("Y-m-d H:i:s");
 
-      include('./img_upload.php');
+      include_once('./img_upload.php');
       $image_name = handle_uploaded_image();
       if ($stmt = $con->prepare('INSERT INTO forum_subjects VALUES("", ?, ?, ?, ?)')) {
         $stmt->bind_param("ssss", $_POST['auteur'], $_POST['titre'], $_POST['tag'], $date);
@@ -33,7 +33,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Poster') {
         $stmt2->close();
         $_SESSION['page'] = "./php/forum/read_subject.php?id_sujet=" . $id_sujet;
       } else {
-        $_SESSION['message'] = 'Erreur de connexion. Veuillez réessayer.';
+        array_push($_SESSION['msg'], 'Erreur de connexion. Veuillez réessayer.');
       }
       header('Location: ../../index.php');
       exit;
@@ -45,6 +45,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Poster') {
 <?php
 if (!isset($_SESSION)) {
   session_start();
+  $_SESSION['msg'] = array();
 }
 $_SESSION['page'] = "./php/forum/insert_subject.php";
 ?>

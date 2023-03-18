@@ -1,6 +1,7 @@
 <?php
 if (!isset($_SESSION)) {
   session_start();
+  $_SESSION['msg'] = array();
 }
 if (!isset($_SESSION['character'])) {
 
@@ -24,7 +25,7 @@ if (!isset($_SESSION['character'])) {
     if ($result->num_rows > 0) {
       header("Location: ./new_party.php");
     } else {
-      $_SESSION['message'] = "Vous n'avez pas de personnage, veuillez en créer un";
+      array_push($_SESSION['msg'], "Vous n'avez pas de personnage, veuillez en créer un");
       header("Location: ./char_crea.php");
     }
     exit();
