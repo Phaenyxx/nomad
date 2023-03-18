@@ -8,17 +8,6 @@
 <body>
 
     <h2>Create a Character</h2>
-
-    <?php if (isset($errors)): ?>
-        <ul>
-            <?php foreach ($errors as $error): ?>
-                <li>
-                    <?= $error ?>
-                </li>
-            <?php endforeach ?>
-        </ul>
-    <?php endif ?>
-
     <div class="container">
 
 
@@ -35,3 +24,11 @@
 </body>
 
 </html>
+<?php
+if (count($_SESSION['msg']) > 0): ?>
+    <script type="text/javascript">
+        print_message(<?php echo json_encode($_SESSION['msg']); ?>);
+    </script>
+    <?php
+    array_splice($_SESSION['msg'], 0);
+endif; ?>
