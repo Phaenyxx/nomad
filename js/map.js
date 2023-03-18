@@ -43,6 +43,8 @@ function checkBorders(tableId) {
     var table = document.getElementById(tableId);
     var borderStyle = "";
 
+    if (table == null)
+        return;
     if (tableId === "map") {
         borderStyle = "3px dashed var(--nomad-dark)";
     } else if (tableId === "minimap") {
@@ -110,7 +112,6 @@ function mapPopup(mode = "keep") {
 function adjustMap(mode) {
     const tableId = mode === 'mini' ? 'minimap' : 'map';
     const tdElements = document.querySelectorAll(`#${tableId} td`);
-    console.log(tdElements);
     for (let i = 0; i < tdElements.length; i++) {
         const tdElement = tdElements[i];
         const id = parseInt(tdElement.getAttribute('biome'));

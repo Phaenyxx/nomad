@@ -15,13 +15,6 @@ function loadmain(url) {
   xhr.send();
 };
 
-
-
-function hideMessageBox() {
-  var messageBox = document.getElementById("message-box");
-  messageBox.style.display = "none";
-}
-
 function switch_form(type, url) {
   var logButton = document.getElementById('logbutton');
   var regButton = document.getElementById('regbutton');
@@ -50,10 +43,20 @@ function switch_form(type, url) {
   xhr.send();
 }
 
-function print_message(input) {
-  var msg = '<div id="message">' + input + '</div>';
+function print_message(messages) {
+  console.log(messages);
+  var msgs = '';
+  for (var i = 0; i < messages.length; i++) {
+    msgs += '<div id="message">' + messages[i] + '</div>';
+  }
+
   document.getElementById('message-box').style.display = 'block';
-  document.getElementById('message-box').innerHTML = msg;
+  document.getElementById('message-box').innerHTML = msgs;
+}
+
+function hideMessageBox() {
+  var messageBox = document.getElementById("message-box");
+  messageBox.style.display = "none";
 }
 
 function check_match(input) {
