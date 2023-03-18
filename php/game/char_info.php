@@ -23,8 +23,7 @@ if (!isset($_SESSION['character'])) {
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
       header("Location: ./new_party.php");
-    }
-    else {
+    } else {
       $_SESSION['message'] = "Vous n'avez pas de personnage, veuillez en créer un";
       header("Location: ./char_crea.php");
     }

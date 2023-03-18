@@ -77,9 +77,9 @@ if ($stmt = $con->prepare('SELECT auteur, message, filename, date_reponse FROM f
         echo '<div class="img-msg">';
         echo nl2br(htmlentities(trim($data['message'])));
         $image_path = './uploads/' . $data['filename'];
-        echo '<a href="'. $image_path.'" target="_blank"><img src="' . $image_path . '"></a></div>';
+        echo '<a href="' . $image_path . '" target="_blank"><img src="' . $image_path . '"></a></div>';
     } else {
-    echo nl2br(htmlentities(trim($data['message'])));
+        echo nl2br(htmlentities(trim($data['message'])));
     }
     echo '</td></tr></table>';
 

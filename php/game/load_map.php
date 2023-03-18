@@ -36,7 +36,7 @@ function loadmap($distance = 5, $mode = "map")
         $rows[$row['position_y']][$row['position_x']] = $row;
     }
 
-    echo '<table id="'.$mode.'">';
+    echo '<table id="' . $mode . '">';
     for ($i = $y - $distance; $i <= $y + $distance; $i++) {
         echo '<tr>';
         for ($j = $x - $distance; $j <= $x + $distance; $j++) {

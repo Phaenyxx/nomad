@@ -1,33 +1,35 @@
 <!doctype html>
 <html lang="FR-fr">
-<?php 
+<?php
 include 'html/head.html';
 ?>
+
 <head>
-<title>Nomad - Accueil</title>
+    <title>Nomad - Accueil</title>
 </head>
 
 <body>
     <?php
     session_start();
     if (!isset($_SESSION['page']))
-    $_SESSION['page'] = './html/accueil.html';
-    
+        $_SESSION['page'] = './html/accueil.html';
+
     include 'php/header.php';
     ?>
     <div id="content"></div>
     <div id="message-box" onclick="hideMessageBox()"></div>
     <script type="text/javascript">
-        loadmain("<?=$_SESSION['page'] ?>");
+        loadmain("<?= $_SESSION['page'] ?>");
     </script>
     <?php
     include 'html/footer.html';
-    if (isset($_SESSION['message'])):?>
+    if (isset($_SESSION['message'])): ?>
         <script type="text/javascript">
-            print_message("<?=$_SESSION['message'] ?>");
+            print_message("<?= $_SESSION['message'] ?>");
         </script>
-    <?php
-    $_SESSION['message'] = NULL;
+        <?php
+        $_SESSION['message'] = NULL;
     endif; ?>
 </body>
+
 </html>

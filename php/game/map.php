@@ -7,5 +7,5 @@ if (!isset($_SESSION)) {
 
 include('./char_info.php');
 include('./load_map.php');
-loadmap(15, "minimap");
+loadmap(20, "minimap");
 ?>

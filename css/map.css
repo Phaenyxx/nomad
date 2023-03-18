@@ -1,11 +1,11 @@
-#map-container {
+#map-outer-container {
     display: flex;
-    gap : 5px;
+    gap: 5px;
     flex-direction: column;
     align-items: center;
 }
 
-#map-container .buttoncontainer .link{
+#map-outer-container .buttoncontainer .link {
     --cell-size: 40px;
     height: var(--cell-size);
     width: var(--cell-size);
@@ -14,9 +14,13 @@
     line-height: var(--cell-size);
 }
 
+#map-container {
+    position: relative;
+}
+
 .row {
     display: flex;
-    gap : 5px;
+    gap: 5px;
     justify-content: center;
     align-items: center;
 }
@@ -34,17 +38,35 @@
         5px 5px 0px var(--nomad-black),
         6px 6px 0px var(--nomad-black);
     border-collapse: separate;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transition: all 0.3s ease;
 }
 
-#minimap {
+#map-popup {
+    z-index: 4;
     position: absolute;
     top: 0;
-    transform: translateX(50%);
+    left: 0;
+    transform-style: preserve-3d;
+     backface-visibility: hidden; 
+    transition: all 0.3s ease;
+    transform: rotateY(180deg);
 }
+
+#map.flip-out {
+    transform: rotateY(180deg);
+    visibility: hidden;
+}
+
+#map-popup.flip-in {
+    transform: rotateY(0deg);
+}
+
 
 #map td {
 
-    --cell-size: 40px;
+    --cell-size: 30px;
     height: var(--cell-size);
     width: var(--cell-size);
     max-width: var(--cell-size);
@@ -58,7 +80,7 @@
 
 #minimap td {
 
-    --cell-size: 16px;
+    --cell-size: 8px;
     height: var(--cell-size);
     width: var(--cell-size);
     max-width: var(--cell-size);
@@ -68,14 +90,4 @@
     background-position: center;
     /* background-size: cover; */
     background-repeat: no-repeat;
-}
-
-#map-popup {
-    opacity: 0;
-    transition-property: opacity;
-    transition-duration: 0.3s;
-}
-
-#map-popup.visible {
-    opacity: 1;
 }

@@ -12,7 +12,7 @@ include('./char_info.php');
   <?= $_SESSION['character']['name'] ?>
 </div>
 
-<div id="map-container">
+<div id="map-outer-container">
   <div class="buttoncontainer">
     <a class="link linkbox" href="#" onclick="moveplayer('up')"> UP</a>
   </div>
@@ -21,10 +21,12 @@ include('./char_info.php');
       <a class="link linkbox" href="#" onclick="moveplayer('left')"> LEFT</a>
 
     </div>
-    <?php
-    include('./load_map.php');
-    loadmap();
-    ?>
+    <div id="map-container">
+      <?php
+      include('./load_map.php');
+      loadmap();
+      ?>
+    </div>
     <div class="buttoncontainer">
       <a class="link linkbox" href="#" onclick="moveplayer('right')"> RIGHT</a>
     </div>
@@ -34,7 +36,5 @@ include('./char_info.php');
   </div>
 </div>
 <div class="buttoncontainer">
-  <a class="link linkbox" href="#" onclick="adjustMap('none')"> Normal</a>
-  <a class="link linkbox" href="#" onclick="adjustMap('topo')"> Topologique</a>
   <a class="link linkbox" href="#" onclick="mapPopup()">Consulter la carte</a>
 </div>
