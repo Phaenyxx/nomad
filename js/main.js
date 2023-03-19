@@ -4,10 +4,11 @@ function loadmain(url) {
   xhr.onload = function () {
     if (xhr.status === 200) {
       document.getElementById('content').innerHTML = xhr.responseText;
+      adjustMap("none");
+      print_message();
     } else {
       document.getElementById('content').textContent = 'Une erreur s\'est produite, veuillez recharger la page';
     }
-    adjustMap("none");
   };
   xhr.onerror = function () {
     document.getElementById('content').textContent = 'Une erreur s\'est produite, veuillez recharger la page';
@@ -43,15 +44,21 @@ function switch_form(type, url) {
   xhr.send();
 }
 
-function print_message(messages) {
-  console.log(messages);
-  var msgs = '';
-  for (var i = 0; i < messages.length; i++) {
-    msgs += '<div id="message">' + messages[i] + '</div>';
+function print_message() {
+  msgbox = document.getElementById("message-box");
+  if (msgbox) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        msgbox.innerHTML = this.responseText;
+        if (msgbox.getElementsByTagName('div').length > 0) {
+          msgbox.style.display = 'flex';
+        }
+      }
+    };
+    xhttp.open("GET", "./php/msg.php", true);
+    xhttp.send();
   }
-
-  document.getElementById('message-box').style.display = 'block';
-  document.getElementById('message-box').innerHTML = msgs;
 }
 
 function hideMessageBox() {

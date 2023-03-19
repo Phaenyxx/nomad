@@ -25,13 +25,7 @@ include 'html/head.html';
     </script>
     <?php
     include 'html/footer.html';
-    if (count($_SESSION['msg']) > 0): ?>
-        <script type="text/javascript">
-            print_message(<?php echo json_encode($_SESSION['msg']); ?>);
-        </script>
-        <?php
-        array_splice($_SESSION['msg'], 0);
-    endif; ?>
+    ?>
 </body>
 
 </html>

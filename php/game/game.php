@@ -8,6 +8,7 @@ include_once('../../../config.php');
 include_once('./char_info.php');
 ?>
 
+
 <div class="container">
   <?= $_SESSION['character']['name'] ?>
 </div>

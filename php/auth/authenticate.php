@@ -23,7 +23,7 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
             $_SESSION['loggedin'] = TRUE;
             $_SESSION['name'] = $_POST['username'];
             $_SESSION['id'] = $id;
-            $_SESSION['page'] = './php/game/game.php';
+            $_SESSION['page'] = './html/accueil.html';
             array_push($_SESSION['msg'], "Connexion réussie !");
             header('Location: ../../index.php');
         } else {

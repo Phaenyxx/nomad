@@ -49,9 +49,10 @@ footer {
     top:0;
     left:0;
     display: none;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     padding: 40px;
+    gap: 10px;
     background-color: rgba(0, 0, 0, 0.4);
 }
 
