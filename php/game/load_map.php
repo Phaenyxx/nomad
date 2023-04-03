@@ -3,14 +3,18 @@
 function display_cell($cell)
 {
     if ($cell) {
-        echo '<td hauteur="' . $cell['hauteur'] . '" biome ="' . $cell['biome'] . '">';
-        // echo '' . $cell['position_y'] . ':' . $cell['position_x'];
-        echo '</td>';
+        $character = isset($cell['character']) ? $cell['character'] : 0;
+        echo '<td hauteur="' . $cell['hauteur'] . '" biome="' . $cell['biome'] . '">';
+        if ($character == 1) {
+            echo '<img class=perso src="./assets/sprites/perso.png" />';
+        } else if ($character == 2) {
+            echo '<img class=perso src="./assets/sprites/other.png" />';
+        }
     } else {
-        echo '<td></td>';
+        echo '<td>';
     }
+    echo '</td>';
 }
-;
 
 function loadmap($distance = 5, $mode = "map")
 {
@@ -26,7 +30,6 @@ function loadmap($distance = 5, $mode = "map")
     }
 
     $stmt = $con->prepare("SELECT * FROM map WHERE position_x BETWEEN ?-? AND ?+? AND position_y BETWEEN ?-? AND ?+? ORDER BY position_y DESC, position_x ASC");
-    print_r($con->error);
     $stmt->bind_param('iiiiiiii', $x, $distance, $x, $distance, $y, $distance, $y, $distance);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -34,6 +37,23 @@ function loadmap($distance = 5, $mode = "map")
     $rows = array();
     while ($row = $result->fetch_assoc()) {
         $rows[$row['position_y']][$row['position_x']] = $row;
+    }
+
+    $persos_stmt = $con->prepare("SELECT * FROM persos WHERE position_x BETWEEN ?-? AND ?+? AND position_y BETWEEN ?-? AND ?+?");
+    $persos_stmt->bind_param('iiiiiiii', $x, $distance, $x, $distance, $y, $distance, $y, $distance);
+    $persos_stmt->execute();
+    $persos_result = $persos_stmt->get_result();
+
+    while ($perso = $persos_result->fetch_assoc()) {
+        $i = $perso['position_y'];
+        $j = $perso['position_x'];
+        if (isset($rows[$i]) && isset($rows[$i][$j])) {
+            if ($i == $y && $j == $x) {
+                $rows[$i][$j]['character'] = 1; // player's character
+            } else {
+                $rows[$i][$j]['character'] = 2; // other character
+            }
+        }
     }
 
     echo '<table id="' . $mode . '">';

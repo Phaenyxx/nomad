@@ -91,3 +91,7 @@
     /* background-size: cover; */
     background-repeat: no-repeat;
 }
+
+.perso {
+    /* filter: drop-shadow(1px 1px 0px var(--nomad-black));  */
+}
