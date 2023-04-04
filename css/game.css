@@ -1,0 +1,62 @@
+#game-container {
+    display: grid;
+    gap: 15px;
+    grid-template-areas: 
+    "map "
+    "actions"
+    "cell"
+    "player"
+    "chat";
+    grid-template-rows: auto 1fr 1fr 1fr 1fr;
+
+}
+
+#map-outer-container {
+    grid-area: map;
+}
+
+.outer-container {
+    grid-area: chat;
+    background-color: var(--nomad-dark);
+    box-shadow: 1px 1px 0px var(--nomad-black),
+    2px 2px 0px var(--nomad-black),
+    3px 3px 0px var(--nomad-black),
+    4px 4px 0px var(--nomad-black),
+    5px 5px 0px var(--nomad-black),
+    6px 6px 0px var(--nomad-black);
+}
+#chat-outer-container {
+    grid-area: chat;
+}
+
+#cell-outer-container {
+    grid-area: cell;
+}
+
+
+#actions-outer-container {
+    grid-area: actions;
+}
+
+#player-outer-container {
+    grid-area: player;
+}
+
+
+
+@media screen and (min-width:800px) {
+
+}
+
+@media screen and (min-width:1024px) {
+    #game-container {
+        width: 80%;
+        grid-template-areas: 
+        "map player player"
+        "map actions cell"
+        "map chat chat"
+        ". chat chat";
+        grid-template-columns: auto 1fr 2fr; 
+        grid-template-rows: auto auto auto; 
+    }
+}

@@ -39,23 +39,24 @@ function loadmap($distance = 5, $mode = "map")
         $rows[$row['position_y']][$row['position_x']] = $row;
     }
 
-    $persos_stmt = $con->prepare("SELECT * FROM persos WHERE position_x BETWEEN ?-? AND ?+? AND position_y BETWEEN ?-? AND ?+?");
-    $persos_stmt->bind_param('iiiiiiii', $x, $distance, $x, $distance, $y, $distance, $y, $distance);
-    $persos_stmt->execute();
-    $persos_result = $persos_stmt->get_result();
+    if ($mode == "map") {
+        $persos_stmt = $con->prepare("SELECT * FROM persos WHERE position_x BETWEEN ?-? AND ?+? AND position_y BETWEEN ?-? AND ?+?");
+        $persos_stmt->bind_param('iiiiiiii', $x, $distance, $x, $distance, $y, $distance, $y, $distance);
+        $persos_stmt->execute();
+        $persos_result = $persos_stmt->get_result();
 
-    while ($perso = $persos_result->fetch_assoc()) {
-        $i = $perso['position_y'];
-        $j = $perso['position_x'];
-        if (isset($rows[$i]) && isset($rows[$i][$j])) {
-            if ($i == $y && $j == $x) {
-                $rows[$i][$j]['character'] = 1; // player's character
-            } else {
-                $rows[$i][$j]['character'] = 2; // other character
+        while ($perso = $persos_result->fetch_assoc()) {
+            $i = $perso['position_y'];
+            $j = $perso['position_x'];
+            if (isset($rows[$i]) && isset($rows[$i][$j])) {
+                if ($i == $y && $j == $x) {
+                    $rows[$i][$j]['character'] = 1; // player's character
+                } else {
+                    $rows[$i][$j]['character'] = 2; // other character
+                }
             }
         }
     }
-
     echo '<table id="' . $mode . '">';
     for ($i = $y - $distance; $i <= $y + $distance; $i++) {
         echo '<tr>';

@@ -9,16 +9,12 @@ include_once('./char_info.php');
 ?>
 
 
-<div class="container">
-  <?= $_SESSION['character']['name'] ?>
-</div>
-
-<div id="map-outer-container">
-  <div class="buttoncontainer">
-    <a class="link linkbox" href="#" onclick="moveplayer('up')"> UP</a>
-  </div>
-  <div class="row">
-    <div class="buttoncontainer">
+<div id="game-container">
+  <div id="map-outer-container">
+    <div class="buttoncontainer" up>
+      <a class="link linkbox" href="#" onclick="moveplayer('up')"> UP</a>
+    </div>
+    <div class="buttoncontainer" left>
       <a class="link linkbox" href="#" onclick="moveplayer('left')"> LEFT</a>
 
     </div>
@@ -28,14 +24,27 @@ include_once('./char_info.php');
       loadmap();
       ?>
     </div>
-    <div class="buttoncontainer">
+    <div class="buttoncontainer" right>
       <a class="link linkbox" href="#" onclick="moveplayer('right')"> RIGHT</a>
     </div>
+    <div class="buttoncontainer" down>
+      <a class="link linkbox" href="#" onclick="moveplayer('down')"> DOWN</a>
+    </div>
   </div>
-  <div class="buttoncontainer">
-    <a class="link linkbox" href="#" onclick="moveplayer('down')"> DOWN</a>
+
+  <div id="chat-outer-container" class="outer-container">
+    CHAT
   </div>
-</div>
-<div class="buttoncontainer">
-  <a class="link linkbox" href="#" onclick="mapPopup()">Consulter la carte</a>
+  <div id="cell-outer-container" class="outer-container">
+    CELL INFO
+  </div>
+  <div id="player-outer-container" class="outer-container">
+    player
+  </div>
+  <div id="actions-outer-container" class="outer-container">
+    ACTIONS
+    <div class="buttoncontainer" minimap>
+      <a class="link linkbox" href="#" onclick="mapPopup()">Consulter la carte</a>
+    </div>
+  </div>
 </div>

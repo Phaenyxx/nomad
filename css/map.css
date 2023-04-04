@@ -1,12 +1,14 @@
 #map-outer-container {
-    display: flex;
-    gap: 5px;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(5, auto);
+    grid-template-rows: repeat(5, auto); 
 }
 
-#map-outer-container .buttoncontainer .link {
-    --cell-size: 40px;
+
+
+#map-outer-container .buttoncontainer:not([minimap]) .link {
+    --cell-size: 30px;
     height: var(--cell-size);
     width: var(--cell-size);
     background-color: var(--nomad-beige);
@@ -14,15 +16,25 @@
     line-height: var(--cell-size);
 }
 
-#map-container {
-    position: relative;
+#map-outer-container .buttoncontainer[up] {
+    grid-area: 1 / 3 / 2 / 4;
+}
+#map-outer-container .buttoncontainer[left] {
+    grid-area: 3 / 1 / 4 / 2;
+}
+#map-outer-container .buttoncontainer[right] {
+    grid-area: 3 / 5 / 4 / 6;
+}
+#map-outer-container .buttoncontainer[down] {
+    grid-area: 5 / 3 / 6 / 4;
+}
+#map-outer-container .buttoncontainer[minimap] {
+    grid-area: 5 / 4 / 6 / 5;
 }
 
-.row {
-    display: flex;
-    gap: 5px;
-    justify-content: center;
-    align-items: center;
+#map-container {
+    position: relative;
+    grid-area: 2 / 2 / 5 / 5; 
 }
 
 #map,
@@ -32,11 +44,11 @@
     border-spacing: 0px;
     padding: 5px;
     box-shadow: 1px 1px 0px var(--nomad-black),
-        2px 2px 0px var(--nomad-black),
-        3px 3px 0px var(--nomad-black),
-        4px 4px 0px var(--nomad-black),
-        5px 5px 0px var(--nomad-black),
-        6px 6px 0px var(--nomad-black);
+    2px 2px 0px var(--nomad-black),
+    3px 3px 0px var(--nomad-black),
+    4px 4px 0px var(--nomad-black),
+    5px 5px 0px var(--nomad-black),
+    6px 6px 0px var(--nomad-black);
     border-collapse: separate;
     transform-style: preserve-3d;
     backface-visibility: hidden;
@@ -66,7 +78,7 @@
 
 #map td {
 
-    --cell-size: 30px;
+    --cell-size: 25px;
     height: var(--cell-size);
     width: var(--cell-size);
     max-width: var(--cell-size);
@@ -76,6 +88,11 @@
     background-position: center;
     /* background-size: cover; */
     background-repeat: no-repeat;
+}
+
+#map td .perso {
+    top: -6px;
+    position: absolute;
 }
 
 #minimap td {
@@ -92,6 +109,20 @@
     background-repeat: no-repeat;
 }
 
-.perso {
-    /* filter: drop-shadow(1px 1px 0px var(--nomad-black));  */
+@media screen and (min-width:800px) {
+
+}
+
+@media screen and (min-width:1024px) {
+    #game-container {
+        width: 100%;
+
+
+        grid-template-areas: 
+        "map actions player"
+        "map chat chat"
+        ". chat chat";
+        grid-template-columns: auto 1fr 1fr; 
+        grid-template-rows: auto auto;
+    }
 }
