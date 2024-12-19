@@ -122,3 +122,8 @@ h2 {
     padding: 20px;
     margin: 20px;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

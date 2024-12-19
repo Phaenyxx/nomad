@@ -12,10 +12,10 @@ include_once('./char_info.php');
 <div id="game-container">
   <div id="map-outer-container">
     <div class="buttoncontainer" up>
-      <a class="link linkbox" href="#" onclick="moveplayer('up')"> UP</a>
+      <a class="link linkbox" href="#" onclick="moveplayer('up')">⌃</a>
     </div>
     <div class="buttoncontainer" left>
-      <a class="link linkbox" href="#" onclick="moveplayer('left')"> LEFT</a>
+      <a class="link linkbox" href="#" onclick="moveplayer('left')"><</a>
 
     </div>
     <div id="map-container">
@@ -25,10 +25,10 @@ include_once('./char_info.php');
       ?>
     </div>
     <div class="buttoncontainer" right>
-      <a class="link linkbox" href="#" onclick="moveplayer('right')"> RIGHT</a>
+      <a class="link linkbox" href="#" onclick="moveplayer('right')">></a>
     </div>
     <div class="buttoncontainer" down>
-      <a class="link linkbox" href="#" onclick="moveplayer('down')"> DOWN</a>
+      <a class="link linkbox" href="#" onclick="moveplayer('down')">⌄</a>
     </div>
   </div>
 
